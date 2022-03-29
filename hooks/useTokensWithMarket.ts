@@ -11,7 +11,6 @@ export const useTokensWithMarket = (tokens: any) => {
       )
     })
     setMarketTokens(auctionTokens)
-    console.log(auctionTokens)
   }, [tokens])
 
   return {

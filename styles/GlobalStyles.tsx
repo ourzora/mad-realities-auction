@@ -68,12 +68,15 @@ export default function GlobalStyles() {
           font-family: var(--font-a) !important;
         }
 
+        html {
+          background-color: var(--black);
+        }
+
         main {
           width: 100%;
           overflow-x: hidden;
           position: relative;
           min-height: calc(100vh - var(--header-height));
-          background-color: var(--white);
         }
 
         header,
@@ -84,13 +87,9 @@ export default function GlobalStyles() {
           align-items: center;
           display: flex;
           justify-content: space-between;
-          background-color: var(--white);
           a {
             text-decoration: none;
-            color: var(--black);
-            &.active {
-              text-decoration: underline;
-            }
+            color: var(--white);
             ${media.hover`
               text-decoration: underline;
             `}
@@ -102,7 +101,6 @@ export default function GlobalStyles() {
           position: sticky;
           top: 0;
           z-index: var(--header-z);
-          border-bottom: var(--border-black);
           a {
             margin-right: 30px;
           }
@@ -116,7 +114,9 @@ export default function GlobalStyles() {
 
         footer {
           height: var(--footer-height);
-          border-top: var(--border-black);
+          position: fixed;
+          bottom: 0;
+          left: 0;
         }
 
         /* TYPOGRPAHY */

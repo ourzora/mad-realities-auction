@@ -10,16 +10,8 @@ export const Header = () => {
           <NavLink passHref href='/'>
             <a>{APP_TITLE}</a>
           </NavLink>
-          <NavLink passHref href='/about'>
-            <a>About</a>
-          </NavLink>
         </div>
-        <div className='flex-row'>
-          <NavLink passHref href='/manage'>
-            <a>Manage</a>
-          </NavLink>
-          <ConnectWallet />
-        </div>
+        <ConnectWallet />
       </header>
     </>
   )

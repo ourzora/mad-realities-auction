@@ -7,7 +7,13 @@ export const AuctionsList = ({ tokens }: { tokens: any[] }) => {
   const router = useRouter()
 
   return (
-    <>
+    <div
+      css={css`
+        width: 100%;
+        max-width: 960px;
+        margin: auto;
+      `}
+    >
       {tokens &&
         tokens.map((token) => {
           const tokenInfo = FetchStaticData.getIndexerServerTokenInfo(token)
@@ -19,6 +25,9 @@ export const AuctionsList = ({ tokens }: { tokens: any[] }) => {
                 width: 100%;
                 display: flex;
                 justify-content: space-between;
+                border: 2px solid var(--white);
+                border-radius: 20px;
+                overflow: hidden;
               `}
             >
               <NFTPreview
@@ -35,6 +44,6 @@ export const AuctionsList = ({ tokens }: { tokens: any[] }) => {
             </div>
           )
         })}
-    </>
+    </div>
   )
 }
