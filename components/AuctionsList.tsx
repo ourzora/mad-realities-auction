@@ -10,8 +10,9 @@ export const AuctionsList = ({ tokens }: { tokens: any[] }) => {
     <div
       css={css`
         width: 100%;
-        max-width: 960px;
-        margin: auto;
+        display: flex;
+        justify-content: center;
+        gap: var(--space-md);
       `}
     >
       {tokens &&
@@ -23,19 +24,15 @@ export const AuctionsList = ({ tokens }: { tokens: any[] }) => {
               css={css`
                 position: relative;
                 width: 100%;
-                display: flex;
-                justify-content: space-between;
-                border: 2px solid var(--white);
-                border-radius: 20px;
-                overflow: hidden;
+                max-width: 720px;
               `}
             >
               <NFTPreview
                 initialData={token}
                 id={tokenInfo.tokenId}
                 contract={tokenInfo.tokenContract}
-                useBetaIndexer={true}
-                onClick={(evt) =>
+                useBetaIndexer
+                onClick={() =>
                   router.push(
                     `/token/${tokenInfo.tokenContract}/${tokenInfo.tokenId}`
                   )

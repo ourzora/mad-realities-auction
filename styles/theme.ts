@@ -16,12 +16,12 @@ export const mediaConfigurationStyles = {
     cardOuter: () => css`
       position: relative;
       width: 100%;
+      border: 2px solid var(--white);
+      border-radius: 20px;
+      overflow: hidden;
       * {
         color: var(--white);
       }
-    `,
-    cardLink: () => css`
-      display: none;
     `,
     cardMediaWrapper: () => css`
       width: 100%;

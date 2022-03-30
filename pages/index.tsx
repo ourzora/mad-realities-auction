@@ -3,18 +3,16 @@ import { AuctionsList } from '../components/AuctionsList'
 import { PageWrapper } from '../styles/components'
 import { Head } from '../components/HeadMeta'
 import { useLiveAuction } from '../hooks/useLiveAuction'
-import { useBidAggregate } from '../hooks/useBidAggregate'
-import { RawDisplayer } from '../components/utils/RawDisplayer'
+import { BidList } from '../components/BidList'
 
 export default function Home({ tokens }: { tokens: any }) {
-  const { liveAuctions } = useLiveAuction(tokens)
-  const allBids = useBidAggregate(tokens)
-  console.log(allBids)
+  const liveAuctions = useLiveAuction(tokens)
   return (
     <PageWrapper>
       <Head />
-      <AuctionsList tokens={liveAuctions} />
-      <RawDisplayer data={allBids} />
+      <h1>Current Auction</h1>
+      <AuctionsList tokens={tokens} />
+      <BidList tokens={tokens} />
     </PageWrapper>
   )
 }

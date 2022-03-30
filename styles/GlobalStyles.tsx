@@ -66,6 +66,7 @@ export default function GlobalStyles() {
         /* LAYOUT */
         body * {
           font-family: var(--font-a) !important;
+          color: var(--white);
         }
 
         html {
@@ -165,6 +166,9 @@ export default function GlobalStyles() {
           border-radius: 5px;
           padding: 12px;
           background-color: #f3f3f3;
+          * {
+            color: var(--black)!important;
+          }
           overflow-x: scroll;
           margin-top: 20px;
           code {
