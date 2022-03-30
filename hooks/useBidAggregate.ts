@@ -7,7 +7,7 @@ export type BidAggregateType = {
   bidder: any,
   bidType: string,
   amount: string,
-  tx: string,
+  tx: any,
 }
 
 export const useBidAggregate = (tokens: any) => {
@@ -22,6 +22,7 @@ export const useBidAggregate = (tokens: any) => {
             bidder: item?.bidder?.id,
             bidType: item?.bidType,
             amount: item?.amount,
+            /* @ts-ignore */
             tx: `https://etherscan.io/tx/${item?.transactionHash}`,
           }))
         )
