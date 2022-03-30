@@ -1,29 +1,25 @@
 import { CONTRACT_ADDRESSES, NETWORK_ID } from '../utils/env-vars'
 import { GetStaticProps } from 'next'
-import {
-  FetchStaticData,
-  MediaFetchAgent,
-  NetworkIDs,
-} from '@zoralabs/nft-hooks'
+import { ZoraIndexerV1DataSource } from '@zoralabs/nft-hooks/dist/backends'
+import { prepareJson } from '@zoralabs/nft-hooks/dist/fetcher/NextUtils'
+import { NetworkIDs } from '@zoralabs/nft-hooks'
 
 export const getStaticTokens: GetStaticProps = async () => {
-  const fetchAgent = new MediaFetchAgent(
-    NETWORK_ID as NetworkIDs
-  )
-
   const contractAddress = CONTRACT_ADDRESSES as string
-
-  const tokens = await FetchStaticData.fetchZoraIndexerList(fetchAgent, {
-    collectionAddresses: contractAddress
-      ? contractAddress.split(',')
-      : undefined,
-    limit: 40,
-    offset: 0,
-  })
+  const network = NETWORK_ID as NetworkIDs
+  const dataSource = new ZoraIndexerV1DataSource(network, 4)
+  const nfts = await dataSource.fetchNFTSForQuery(
+    contractAddress ? contractAddress.split(',') : [],
+    '', // curator address
+    null,
+    false,
+    40,
+    0
+  )
 
   return {
     props: {
-      tokens,
+      tokens: prepareJson(nfts),
     },
     revalidate: 60,
   }

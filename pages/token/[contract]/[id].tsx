@@ -19,19 +19,18 @@ export default function Token({
       <Head title={name} description={description} ogImage={image} />
       <PageWrapper>
         <NFTFullPage
-          useBetaIndexer={true}
           contract={contract as string}
           id={id as string}
-          initialData={initialData}
+          options={{initialData}}
         >
           <AuctionManager renderMedia={TokenPreview}>
             <FullComponents.MediaFull />
             <FullComponents.MediaInfo />
             <FullComponents.AuctionInfo />
-            <BidButton />
+            {/* <BidButton /> */}
             <FullComponents.ProofAuthenticity />
             <FullComponents.NFTProperties />
-            <FullComponents.BidHistory />
+            {/* <FullComponents.BidHistory /> */}
             <RenderNFTData />
           </AuctionManager>
         </NFTFullPage>

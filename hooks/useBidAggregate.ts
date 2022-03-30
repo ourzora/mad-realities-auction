@@ -15,18 +15,23 @@ export const useBidAggregate = (tokens: any) => {
   const auctionList = useMemo(() => {
     try {
       const allBids = tokens.map((token: any) => {
-        return (
-          token?.nft.auctionData?.previousBids.map((item: BidAggregateType) => ({
-            tokenId: token?.nft?.tokenData?.tokenId,
-            tokenName: token?.nft?.tokenData?.metadata?.json?.name,
-            bidder: item?.bidder?.id,
-            bidType: item?.bidType,
-            amount: item?.amount,
-            /* @ts-ignore */
-            tx: `https://etherscan.io/tx/${item?.transactionHash}`,
-          }))
-        )
+        console.log(token)
+        
+        if (token?.markets[0]) {
+          return (
+            token?.markets[0].bids.map((item: any) => ({
+              tokenId: token?.nft?.tokenId,
+              tokenName: token?.metadata?.name,
+              bidder: item?.creator,
+              amount: `${item?.amount?.prettyAmount} ${item?.amount?.symbol}`,
+              tx: `https://etherscan.io/tx/${item?.created?.transactionHash}`,
+            }))
+          )
+        } else {
+          return {}
+        }
       }).flat()
+      console.log('all bids', allBids)
       return allBids.filter((x: any) => x !== undefined)
     } catch (err) {
       console.log(err)

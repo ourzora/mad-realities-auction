@@ -8,8 +8,18 @@ export default function GlobalStyles() {
       styles={css`
         :root {
           @font-face {
-            font-family: Inter;
-            src: url('./fonts/Inter-Regular.ttf');
+            font-family: RobotoBold;
+            src: url('./fonts/Roboto-Bold.ttf');
+          }
+
+          @font-face {
+            font-family: RobotoRegular;
+            src: url('./fonts/Rubik-VariableFont_wght.ttf');
+          }
+
+          @font-face {
+            font-family: Pricedown;
+            src: url('./fonts/pricedown-bl.otf');
           }
 
           /* COLORS */
@@ -22,8 +32,9 @@ export default function GlobalStyles() {
           --border-light: 1px solid #dbdbdb;
 
           /* FONTS */
-          --font-a: 'Inter', Helvetica, Arial, sans-serif;
-          --font-b: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+          --font-a: 'RobotoRegular', Helvetica, Arial, sans-serif;
+          --font-b: 'RobotoBold', Helvetica, Arial, sans-serif;
+          --display-font: 'Pricedown', Helvetica, Arial, sans-serif;
 
           /* SPACING */
           --base-unit: 8px;
@@ -91,9 +102,6 @@ export default function GlobalStyles() {
           a {
             text-decoration: none;
             color: var(--white);
-            ${media.hover`
-              text-decoration: underline;
-            `}
           }
         }
 
@@ -104,6 +112,8 @@ export default function GlobalStyles() {
           z-index: var(--header-z);
           a {
             margin-right: 30px;
+            font-family: var(--display-font)!important;
+            font-size: var(--text-04);
           }
         }
 
@@ -179,6 +189,31 @@ export default function GlobalStyles() {
           * {
             font-family: var(--font-b) !important;
           }
+        }
+
+        .display-font {
+          font-family: var(--display-font)!important;
+          text-shadow: 
+            1px 1px 3px #000, 
+            3px 3px 10px purple,
+            3px 3px 15px yellow,
+            3px 3px 30px #ff9050;
+        }
+
+        .text-01 {
+          font-size: var(--text-01);
+        }
+        .text-02 {
+          font-size: var(--text-02);
+        }
+        .text-03 {
+          font-size: var(--text-03);
+        }
+        .text-04 {
+          font-size: var(--text-04);
+        }
+        .text-05 {
+          font-size: var(--text-05);
         }
       `}
     />

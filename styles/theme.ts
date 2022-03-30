@@ -16,11 +16,13 @@ export const mediaConfigurationStyles = {
     cardOuter: () => css`
       position: relative;
       width: 100%;
-      border: 2px solid var(--white);
+      border: 2px solid #d99bff;
       border-radius: 20px;
       overflow: hidden;
+      background-color: #d99bff;
       * {
-        color: var(--white);
+        color: var(--black);
+        line-height: 1.2;
       }
     `,
     cardMediaWrapper: () => css`
@@ -33,6 +35,17 @@ export const mediaConfigurationStyles = {
         ${mixins.absoluteFullCentered};
         object-fit: cover;
       }
+    `,
+    cardAuctionPricing: () => css`
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-rows: auto auto;
+      grid-auto-columns: 1fr;
+      padding: 10px 15px;
+      border-top: 1px dashed black;
+    `,
+    cardItemInfo: () => css`
+      padding: 10px 15px;
     `,
     /* Full Page */
     fullPage: () => css`

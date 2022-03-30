@@ -44,26 +44,47 @@ export function BidList({tokens}: {tokens?: any[]}) {
       width: 100%;
       display: flex;
       flex-direction: column;
-      align-items: center; 
+      align-items: center;
+      gap: var(--space-md);
+      padding-top: var(--space-lg);
     `}>
-      <h2>All Bids</h2>
-      <table css={css`
+      <h2 className="display-font text-05">All Bids</h2>
+      <div css={css`
         width: 100%;
-        display: table;
         max-width: 960px;
-        td {
-          padding: 5px;
-        }
+        background-color: #ff1f8c;
+        padding: var(--space-md);
+        border-radius: var(--space-md);
       `}>
-        <tr>
-          <th>NFT</th>
-          <th>Bidder</th>
-          <th>Amount</th>
-        </tr>
-        {allBids.map((bid: any) =>
-          <BidInfo bid={bid} key={bid.tx}/>
-        )}
-      </table>
+        <table css={css`
+          width: 100%;
+          display: table;
+          th {
+            font-family: var(--display-font)!important;
+            font-size: var(--text-03);
+            padding-bottom: var(--space-md);
+            text-shadow: 
+              1px 1px 1px #000, 
+               3px 3px 5px blue;
+          }
+          td {
+            padding: 5px;
+            width: calc(100% / 3);
+          }
+          tr {
+            text-align: center;
+          }
+        `}>
+          <tr>
+            <th>NFT</th>
+            <th>Bidder</th>
+            <th>Amount</th>
+          </tr>
+          {allBids.map((bid: any) =>
+            <BidInfo bid={bid} key={bid.tx}/>
+          )}
+        </table>
+      </div>
     </div>
   )
 }

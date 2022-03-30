@@ -1,4 +1,3 @@
-import { FetchStaticData } from '@zoralabs/nft-hooks'
 import { NFTPreview } from '@zoralabs/nft-components'
 import { useRouter } from 'next/router'
 import { css } from '@emotion/react'
@@ -17,10 +16,10 @@ export const AuctionsList = ({ tokens }: { tokens: any[] }) => {
     >
       {tokens &&
         tokens.map((token) => {
-          const tokenInfo = FetchStaticData.getIndexerServerTokenInfo(token)
+          const tokenInfo = token;
           return (
             <div
-              key={`${tokenInfo.tokenContract}-${tokenInfo.tokenId}`}
+              key={`${tokenInfo.nft.contract.address}-${tokenInfo.nft.tokenId}`}
               css={css`
                 position: relative;
                 width: 100%;
@@ -28,13 +27,12 @@ export const AuctionsList = ({ tokens }: { tokens: any[] }) => {
               `}
             >
               <NFTPreview
-                initialData={token}
+                options={{initialData: token}}
                 id={tokenInfo.tokenId}
                 contract={tokenInfo.tokenContract}
-                useBetaIndexer
-                onClick={() =>
+                onClick={(evt) =>
                   router.push(
-                    `/token/${tokenInfo.tokenContract}/${tokenInfo.tokenId}`
+                    `/token/${tokenInfo.nft.contract.address}/${tokenInfo.nft.tokenId}`
                   )
                 }
               />

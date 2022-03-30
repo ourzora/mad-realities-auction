@@ -1,10 +1,10 @@
 import { GetServerSideProps } from 'next'
 import {
-  MediaFetchAgent,
   NetworkIDs,
-  FetchStaticData,
 } from '@zoralabs/nft-hooks'
+import { prepareJson } from '@zoralabs/nft-hooks/dist/fetcher/NextUtils'
 import { addIPFSGateway } from '../utils/addIPFSGateway'
+import { ZoraV2IndexerStrategy } from '@zoralabs/nft-hooks/dist/strategies'
 
 export type TokenProps = {
   id: string
@@ -27,19 +27,13 @@ export const getToken: GetServerSideProps = async ({ params }) => {
   const id = params.id as string
   const contract = params.contract as string
 
-  const fetchAgent = new MediaFetchAgent(
-    process.env.NEXT_PUBLIC_NETWORK_ID as NetworkIDs
-  )
-  const data = await FetchStaticData.fetchZoraIndexerItem(fetchAgent, {
-    tokenId: id,
-    collectionAddress: contract,
-  })
-
-  const tokenInfo = FetchStaticData.getIndexerServerTokenInfo(data)
+  const networkId = process.env.NEXT_PUBLIC_NETWORK_ID as NetworkIDs
+  const strategy = new ZoraV2IndexerStrategy(networkId);
+  const nft = await strategy.fetchNFT(contract, id)
 
   let tokenImage = null
   try {
-    tokenImage = addIPFSGateway(tokenInfo.metadata?.image)
+    tokenImage = addIPFSGateway(nft.metadata?.image)
   } catch (err) {
     console.log(err)
   }
@@ -48,10 +42,10 @@ export const getToken: GetServerSideProps = async ({ params }) => {
     props: {
       id,
       contract,
-      name: tokenInfo.metadata?.name || null,
-      description: tokenInfo.metadata?.description || null,
+      name: nft.metadata?.name || null,
+      description: nft.metadata?.description || null,
       image: tokenImage,
-      initialData: data,
+      initialData: prepareJson(nft),
     },
   }
 }

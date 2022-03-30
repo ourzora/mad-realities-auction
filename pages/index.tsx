@@ -1,3 +1,4 @@
+import { css } from '@emotion/react'
 import { getStaticTokens } from '../services/getStaticTokens'
 import { AuctionsList } from '../components/AuctionsList'
 import { PageWrapper } from '../styles/components'
@@ -10,7 +11,7 @@ export default function Home({ tokens }: { tokens: any }) {
   return (
     <PageWrapper>
       <Head />
-      <h1>Current Auction</h1>
+      <h1 className="display-font">Current Auction</h1>
       <AuctionsList tokens={tokens} />
       <BidList tokens={tokens} />
     </PageWrapper>

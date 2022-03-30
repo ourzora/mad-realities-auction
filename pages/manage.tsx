@@ -3,7 +3,7 @@ import { AuctionManager } from '@zoralabs/manage-auction-hooks'
 import { useWalletButton } from '@zoralabs/simple-wallet-provider'
 import { Head } from '../components/HeadMeta'
 import { PageWrapper } from './../styles/components'
-import { TokenPreview, OwnedTokenList } from '../components/manage'
+import { TokenPreview } from '../components/manage'
 import { APP_TITLE } from '../utils/env-vars'
 
 export default function Manage() {
@@ -28,9 +28,6 @@ export default function Manage() {
             <h1>Connect Your Wallet To Manage Your NFTs</h1>
           </PageWrapper>
         )}
-        <PageWrapper grid>
-          <OwnedTokenList />
-        </PageWrapper>
       </AuctionManager>
     </>
   )
