@@ -20,6 +20,7 @@ export const mediaConfigurationStyles = {
       border-radius: 20px;
       overflow: hidden;
       background-color: #d99bff;
+      box-shadow: var(--funky-shadow);
       * {
         color: var(--black);
         line-height: 1.2;

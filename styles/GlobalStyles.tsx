@@ -56,6 +56,12 @@ export default function GlobalStyles() {
           --content-width-md: 960px;
           --content-width-lg: ${returnBreakpoint('desktop')};
           --content-width-xl: ${returnBreakpoint('xl')};
+
+          --funky-shadow:
+              1px 1px 3px #000, 
+              3px 3px 10px purple,
+              3px 3px 15px yellow,
+              3px 3px 30px #ff9050;
         }
 
         /* MEDIA QUERY MIXIN */
@@ -194,6 +200,14 @@ export default function GlobalStyles() {
         .display-font {
           font-family: var(--display-font)!important;
           text-shadow: 
+            1px 1px 3px #000, 
+            3px 3px 10px purple,
+            3px 3px 15px yellow,
+            3px 3px 30px #ff9050;
+        }
+
+        .funky-shadow {
+          box-shadow:
             1px 1px 3px #000, 
             3px 3px 10px purple,
             3px 3px 15px yellow,

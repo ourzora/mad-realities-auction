@@ -6,8 +6,16 @@ import { Head } from '../components/HeadMeta'
 import { useLiveAuction } from '../hooks/useLiveAuction'
 import { BidList } from '../components/BidList'
 
-export default function Home({ tokens }: { tokens: any }) {
+export default function Home({
+  tokens,
+  landingToken
+}: {
+  tokens: any,
+  landingToken: any
+}) {
   const liveAuctions = useLiveAuction(tokens)
+  console.log('landingToken', landingToken)
+  
   return (
     <PageWrapper>
       <Head />

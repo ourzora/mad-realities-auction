@@ -29,3 +29,8 @@ export const HOSTED_BID_FLOW =
   process.env.NEXT_PUBLIC_HOSTED_BID_FLOW === undefined
     ? true
     : false
+
+export const LANDING_HERO_TOKEN =
+  process.env.NEXT_PUBLIC_FEATURED_AUCTION_ID === undefined
+    ? false
+    : process.env.NEXT_PUBLIC_FEATURED_AUCTION_ID
