@@ -44,6 +44,7 @@ export const getStaticTokens: GetStaticProps = async () => {
     props: {
       landingToken: nft ? prepareJson(nft) : null,
       tokens: prepareJson(filteredTokens),
+      allTokens: prepareJson(nfts),
     },
     revalidate: 60,
   }

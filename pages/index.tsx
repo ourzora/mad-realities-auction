@@ -5,23 +5,25 @@ import { PageWrapper } from '../styles/components'
 import { Head } from '../components/HeadMeta'
 import { useLiveAuction } from '../hooks/useLiveAuction'
 import { BidList } from '../components/BidList'
+import { HeroToken } from '../components/HeroToken'
 
 export default function Home({
   tokens,
-  landingToken
+  landingToken,
+  allTokens,
 }: {
   tokens: any,
-  landingToken: any
+  landingToken: any,
+  allTokens: any[]
 }) {
-  const liveAuctions = useLiveAuction(tokens)
-  console.log('landingToken', landingToken)
-  
   return (
     <PageWrapper>
       <Head />
       <h1 className="display-font">Current Auction</h1>
+      <HeroToken token={landingToken} />
+      <BidList tokens={allTokens} />
+      <h1 className="display-font">Past Auctions</h1>
       <AuctionsList tokens={tokens} />
-      <BidList tokens={tokens} />
     </PageWrapper>
   )
 }
