@@ -6,20 +6,16 @@ import { HOSTED_BID_FLOW } from '../../utils/env-vars'
 
 export const BidButton = () => {
   const { openBidAuction } = useManageAuction()
-  const {
-    nft: { data },
-  } = useContext(NFTDataContext)
+  const { data } = useContext(NFTDataContext)
 
   if (
-    !data ||
-    !data.pricing.reserve ||
-    data.pricing.reserve.current.likelyHasEnded
+    !data
   ) {
     return <Fragment />
   }
   return (
     <Fragment>
-      {HOSTED_BID_FLOW ? (
+      {/*HOSTED_BID_FLOW ? (
         <Button
           primary={true}
           href={[
@@ -35,13 +31,12 @@ export const BidButton = () => {
         <button
           className='button'
           onClick={() => {
-            /* @ts-ignore */
             openBidAuction(parseInt(`${data.pricing.reserve.id}`) as number)
           }}
         >
           Place Bid
         </button>
-      )}
+        )*/}
     </Fragment>
   )
 }

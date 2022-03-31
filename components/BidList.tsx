@@ -47,14 +47,16 @@ export function BidList({tokens}: {tokens?: any[]}) {
       align-items: center;
       gap: var(--space-md);
       padding-top: var(--space-lg);
+      margin: 0 auto var(--space-lg);
     `}>
       <h2 className="display-font text-05">All Bids</h2>
       <div css={css`
         width: 100%;
         max-width: 960px;
-        background-color: #ff1f8c;
+        background: var(--warm-gradient);
         padding: var(--space-md);
         border-radius: var(--space-md);
+        box-shadow: var(--dark-shadow);
       `}>
         <table css={css`
           width: 100%;
@@ -63,9 +65,7 @@ export function BidList({tokens}: {tokens?: any[]}) {
             font-family: var(--display-font)!important;
             font-size: var(--text-03);
             padding-bottom: var(--space-md);
-            text-shadow: 
-              1px 1px 1px #000, 
-               3px 3px 5px blue;
+            text-shadow: var(--funky-text-shadow);
           }
           td {
             padding: 5px;

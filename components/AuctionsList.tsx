@@ -9,8 +9,12 @@ export const AuctionsList = ({ tokens }: { tokens: any[] }) => {
     <div
       css={css`
         width: 100%;
+        max-width: 1240px;
+        margin: auto;
         display: flex;
         justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
         gap: var(--space-md);
       `}
     >
@@ -23,7 +27,7 @@ export const AuctionsList = ({ tokens }: { tokens: any[] }) => {
               css={css`
                 position: relative;
                 width: 100%;
-                max-width: 720px;
+                max-width: 420px;
               `}
             >
               <NFTPreview

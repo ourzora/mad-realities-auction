@@ -1,10 +1,11 @@
+import { css } from '@emotion/react'
 import { NFTFullPage, FullComponents } from '@zoralabs/nft-components'
 import { AuctionManager } from '@zoralabs/manage-auction-hooks'
 import { getToken, TokenProps } from '../../../services/getToken'
 import { Head } from '../../../components/HeadMeta'
 import { PageWrapper } from '../../../styles/components'
-import { RenderNFTData } from '../../../components/utils/RenderNFTData'
-import { TokenPreview, BidButton } from '../../../components/manage'
+import { TokenPreview } from '../../../components/manage'
+import { funkyWrapper } from '../../../styles/mixins'
 
 export default function Token({
   id,
@@ -25,13 +26,16 @@ export default function Token({
         >
           <AuctionManager renderMedia={TokenPreview}>
             <FullComponents.MediaFull />
-            <FullComponents.MediaInfo />
-            <FullComponents.AuctionInfo />
-            {/* <BidButton /> */}
-            <FullComponents.ProofAuthenticity />
-            <FullComponents.NFTProperties />
-            {/* <FullComponents.BidHistory /> */}
-            <RenderNFTData />
+            <div css={css`
+              ${funkyWrapper}
+            `}>
+              <FullComponents.MediaInfo />
+              <FullComponents.AuctionInfo />
+              {/* <BidButton /> */}
+              <FullComponents.ProofAuthenticity />
+              <FullComponents.NFTProperties />
+              <FullComponents.BidHistory />
+            </div>
           </AuctionManager>
         </NFTFullPage>
       </PageWrapper>

@@ -72,9 +72,8 @@ export const buttonInit = css`
 
 export const buttonStyle = css`
   ${buttonInit};
-  border: var(--border-black);
   color: var(--black);
-  background-color: pink;
+  background: var(--green-gradient);
   margin: 0 auto;
   position: relative;
   display: block;
@@ -83,8 +82,27 @@ export const buttonStyle = css`
   border-radius: 50rem;
   text-align: center;
   ${media.hover`
-    background-color: var(--black);
-    color: var(--white);
+    background: linear-gradient(90deg, rgba(29,246,253,1) 30%, rgba(166,252,69,1) 100%);
+  `}
+`
+
+export const smallPillButton = css`
+  ${buttonInit};
+  border: 2px solid var(--color-a);
+  font-size: var(--text-01);
+  font-family: var(--helvetica);
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  color: var(--color-b);
+  background-color: var(--color-a);
+  text-transform: uppercase;
+  transition: all 0ms!important;
+  ${media.hover`
+    color: var(--color-a);
+    background-color: var(--color-b);
   `}
 `
 
@@ -92,6 +110,20 @@ export const pixelScaleImage = css`
   image-rendering: pixelated;
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
+`
+
+export const funkyWrapper = css`
+  width: 100%;
+  max-width: 960px;
+  margin: auto;
+  background-color: var(--color-a);
+  padding: var(--space-sm) var(--space-md) var(--space-md);
+  border-radius: var(--space-md);
+  margin-top: var(--space-lg);
+  gap: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--dark-shadow);
 `
 
 // FORM ELEMENTS

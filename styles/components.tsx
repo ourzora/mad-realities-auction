@@ -9,7 +9,7 @@ export const PageWrapper = styled.section<PageWrapperProps>`
   width: 100%;
   max-width: '100%';
   position: relative;
-  padding: var(--space-sm);
+  padding: 0 var(--space-md);
   display: flex;
   flex-direction: column;
   margin-bottom: var(--footer-height);

@@ -19,7 +19,7 @@ export const TokenPreview = ({
         justify-content: space-between;
       `}
     >
-      <NFTPreview id={tokenId} contract={tokenContract} useBetaIndexer={true}>
+      <NFTPreview id={tokenId} contract={tokenContract}>
         <PreviewComponents.MediaThumbnail />
         {children}
       </NFTPreview>

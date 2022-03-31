@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import { AuctionManager } from '@zoralabs/manage-auction-hooks'
 import { TokenPreview, BidButton } from '../components/manage'
-import { media } from '../styles/mixins'
+import { funkyWrapper, media } from '../styles/mixins'
 import { NFTFullPage, FullComponents } from '@zoralabs/nft-components'
 import { CONTRACT_ADDRESSES } from '../utils/env-vars'
 
@@ -25,19 +25,9 @@ export function HeroToken({token}: {token: any}) {
             margin: auto;
           `}>
             <div css={css`
-              height: 55vh;
+              height: 50vh;
               position: relative;
               z-index: 10;
-              &:after {
-                content: '';
-                background-color: var(--color-b);
-                height: 100%;
-                width: 50%;
-                position: absolute;
-                top: 0;
-                right: 0;
-                z-index: 0;
-              }
             `}>
               <div css={css`
                 position: relative;
@@ -65,15 +55,15 @@ export function HeroToken({token}: {token: any}) {
             target="_blank"
             rel="noreferrer"
             css={css`
-              background-color: pink;
               font-size: var(--text-04);
               font-family: var(--display-font)!important;
               width: 100%;
               max-width: 400px;
               border: 0;
               box-shadow: var(--funky-shadow);
-              padding-bottom: 15px;
+              padding-bottom: 20px;
               z-index: 100;
+              background-color: pink;
               ${media.hover`
                 background-color: #e7435f;
               `}
@@ -84,31 +74,26 @@ export function HeroToken({token}: {token: any}) {
           </div>
           <div
             css={css`
-              background-color: var(--color-b);
-              width: 100%;
-              max-width: 960px;
-              margin: auto;
-              background-color: #ff1f8c;
-              padding: var(--space-md);
-              border-radius: var(--space-md);
-              margin-top: var(--space-lg);
-              gap: var(--space-sm);
+              ${funkyWrapper}
               * {
-                font-size: var(--text-01)!important;
                 color: white;
                 opacity: 1!important;
-                ${media.laptop`
-                  font-size: var(--text-01)!important;
-                `}
+              }
+              .zora-fullTitle {
+                font-size: var(--text-03)!important;
+                font-family: var(--display-font)!important;
+                text-shadow: var(--funky-text-shadow);
+                margin: 0;
+                padding-top: 0;
+              }
+              .zora-fullDescription {
+                font-size: var(--text-01)!important;
               }
               .zora-fullItemInfo {
                 padding: var(--space-sm);
                 border-bottom: 4px solid var(--color-a);
                 * {
-                  line-height: 1.15;
-                  ${media.laptop`
-                    font-size: var(--text-02)!important;
-                  `}
+                  line-height: 1.35;
                 }
               }
               .zora-fullCreatorOwnerSection {

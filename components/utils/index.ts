@@ -1,4 +1,4 @@
 import { MarkDown } from './MarkDown'
-import { RenderNFTData } from './RenderNFTData'
+import { RawDisplayer } from './RawDisplayer'
 
-export { MarkDown, RenderNFTData }
+export { MarkDown, RawDisplayer }
