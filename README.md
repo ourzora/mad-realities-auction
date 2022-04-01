@@ -11,7 +11,7 @@ Every week, we release and auction a new unique 1/1 representing the next episod
 
 Auction ends live on screen at the end of the live aftershow. Episode starts at 8pm ET.
 
-![1 NFT - IG.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b64230d1-df6c-426b-bba4-f50c81794a21/1_NFT_-_IG.png)
+![1 NFT - IG.png](/nft_reveals_week_3.png)
 
 ## Rules of the Game: Proof of Love
 
