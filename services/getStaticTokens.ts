@@ -40,6 +40,15 @@ export const getStaticTokens: GetStaticProps = async () => {
     console.log(err)
   }
 
+  let metaNFT = null
+
+  try {
+    metaNFT = LANDING_HERO_TOKEN && await strategy.fetchNFT(contractAddress, LANDING_HERO_TOKEN)
+    console.log(metaNFT)
+  } catch (err) {
+    console.log(err)
+  }
+
   return {
     props: {
       landingToken: nft ? prepareJson(nft) : null,

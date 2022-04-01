@@ -9,7 +9,15 @@ export const Header = () => {
       <header>
         <div className='flex-row' css={css`width: 100%; justify-content: space-between;`}>
           <NavLink passHref href='/'>
-            <a>{APP_TITLE}</a>
+            <div css={css`
+              width: 350px;
+              img {
+                width: 100%;
+                height: auto;
+              }
+            `}>
+              <img src="mr-logo-chunky.png" alt={APP_TITLE} />
+            </div>
           </NavLink>
           <NavLink passHref href='/about'>
             <a>About</a>
