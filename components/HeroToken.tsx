@@ -2,10 +2,9 @@ import { css } from '@emotion/react'
 import { AuctionManager } from '@zoralabs/manage-auction-hooks'
 import { TokenPreview } from '../components/manage'
 import { PricingComponent } from '@zoralabs/nft-components/dist/nft-preview/PricingComponent'
-import { funkyWrapper, funkyHeader } from '../styles/mixins'
 import { NFTFullPage, FullComponents } from '@zoralabs/nft-components'
 import { CONTRACT_ADDRESSES } from '../utils/env-vars'
-import { NFTDescription } from './NFTDescription'
+import Link from 'next/link'
 
 export function HeroToken({token}: {token: any}) {
   // const { position } = useHoverPerspective()
@@ -26,15 +25,21 @@ export function HeroToken({token}: {token: any}) {
           display: flex;
           flex-direction: column;
           gap: var(--space-sm);
+          padding-bottom: var(--space-md);
         `}>
-          <div css={css`
-            height: 50vh;
-            position: relative;
-            z-index: 10;
-            filter: drop-shadow(0px 0px 15px #4c015f);
-          `}>
-            <FullComponents.MediaFull />
-          </div>
+          <Link
+            href={`/token/${CONTRACT_ADDRESSES}/${token?.nft?.tokenId}`}
+            passHref
+          >
+            <a css={css`
+              height: 50vh;
+              position: relative;
+              z-index: 10;
+              filter: drop-shadow(0px 0px 15px #4c015f);
+            `}>
+              <FullComponents.MediaFull />
+            </a>
+          </Link>
           <div css={css`
             width: 100%;
             max-width: 600px;
@@ -54,44 +59,30 @@ export function HeroToken({token}: {token: any}) {
           `}>
             <PricingComponent />
           </div>
-          {/* <BidButton /> */}
-          <a
-            className='funky-button'
-            href={`https://zora.co/collections/${CONTRACT_ADDRESSES}/${token?.nft?.tokenId}`}
-            target="_blank"
-            rel="noreferrer"
+          <div
+            className="flex-row"
+            css={css`
+              flex-wrap: wrap;
+              justify-content: center;
+            `}
           >
-            Bid on Zora
-          </a>
-        </div>
-        <div
-          css={css`
-            ${funkyWrapper}
-            * {
-              color: white;
-              opacity: 1!important;
-            }
-            .zora-fullLabel {
-              ${funkyHeader};
-              padding-bottom: var(--space-md);
-            }
-          `}
-        >
-          <NFTDescription />
-          {/*<FullComponents.AuctionInfo />*/}
-          <FullComponents.NFTProperties />
-        {/* 
-          <div css={css`
-          margin-top: var(--space-md);
-          .zora-fullLabel {
-            padding-bottom: var(--space-sm);
-            border-bottom: 1px dashed var(--color-a);
-            margin-bottom: var(--space-sm);
-          }
-        `}>
-          <FullComponents.BidHistory />
-        </div>
-        */}
+            <a
+              className="funky-button"
+              href={`https://zora.co/collections/${CONTRACT_ADDRESSES}/${token?.nft?.tokenId}`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Bid on Zora
+            </a>
+            <Link
+              href={`/token/${CONTRACT_ADDRESSES}/${token?.nft?.tokenId}`}
+              passHref
+            >
+              <a className="funky-button">
+                More Info
+              </a>
+            </Link>
+          </div>
         </div>
       </AuctionManager>
     </NFTFullPage>

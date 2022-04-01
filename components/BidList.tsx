@@ -48,11 +48,13 @@ export function BidList({tokens}: {tokens?: any[]}) {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: var(--space-md);
       padding-top: var(--space-lg);
       margin: 0 auto var(--space-lg);
     `}>
-      <h2 className="display-font text-05">If u bid ur sexy</h2>
+      <h1 className="display-font text-05">If u bid ur sexy</h1>
+      <h3 className="subhead">
+      Thanks to all our bidders ️‍🔥 we’re taking notes on who’s participating, and bidders will get special gifts sent as a thank you 🎁
+      </h3>
       <div css={css`
         width: 100%;
         max-width: 960px;
