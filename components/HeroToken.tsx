@@ -1,52 +1,65 @@
 import { css } from '@emotion/react'
 import { AuctionManager } from '@zoralabs/manage-auction-hooks'
 import { TokenPreview, BidButton } from '../components/manage'
+import { PricingComponent } from '@zoralabs/nft-components/dist/nft-preview/PricingComponent'
 import { funkyWrapper, media } from '../styles/mixins'
 import { NFTFullPage, FullComponents } from '@zoralabs/nft-components'
 import { CONTRACT_ADDRESSES } from '../utils/env-vars'
+import { useHoverPerspective } from '../hooks/useHoverPerspective'
+import { useEffect } from 'react'
 
 export function HeroToken({token}: {token: any}) {
+  const { position } = useHoverPerspective()
+  
+  useEffect(() => {console.log(position)}, [position])
+
   return (
     <NFTFullPage
       contract={CONTRACT_ADDRESSES as string}
       id={token?.nft?.tokenId as string}
-      options={{token}}
+      options={{ token }}
     >
       <AuctionManager renderMedia={TokenPreview}>
         <div css={css`
           display: grid;
           grid-template-columns: 1fr;
         `}>
-          <div css={
-          css`
+          <div css={css`
             position: relative;
             width: 100%;
             max-width: 960px;
             margin: auto;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
           `}>
             <div css={css`
               height: 50vh;
               position: relative;
               z-index: 10;
+              filter: drop-shadow(0px 0px 15px #4c015f);
             `}>
-              <div css={css`
-                position: relative;
-                z-index: 100;
-                height: 100%;
-                width: 100%;
-                .zora-fullMediaWrapper {
-                  width: 100%;
-                  margin: 0;
-                  height: 100%;
-                  img, video {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
-                  }
+              <FullComponents.MediaFull />
+            </div>
+            <div css={css`
+              margin: 0 auto;
+              width: 100%;
+              max-width: 600px;
+              padding: var(--space-sm);
+              background: var(--warm-gradient);
+              border-radius: var(--space-sm);
+              box-shadow: var(--dark-shadow);
+              margin: var(--space-sm) auto;
+              .zora-cardAuctionPricing {
+                border-top: 0;
+                font-size: var(--text-02);
+                * {
+                  opacity: 1;
                 }
-              `}>
-                <FullComponents.MediaFull />
-              </div>
+                text-align: center;
+              }
+            `}>
+              <PricingComponent />
             </div>
             {/* <BidButton /> */}
           <a
@@ -60,7 +73,6 @@ export function HeroToken({token}: {token: any}) {
               width: 100%;
               max-width: 400px;
               border: 0;
-              box-shadow: var(--funky-shadow);
               padding-bottom: 20px;
               z-index: 100;
               background-color: pink;

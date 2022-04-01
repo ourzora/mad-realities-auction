@@ -6,6 +6,15 @@ export function useHoverPerspective() {
   const onMouseMove = useCallback((e: MouseEvent) => {
     e.preventDefault();
     setPosition(e);
+    /*
+      const xRange = (x !== undefined) ? x : 20
+      const yRange = (y !== undefined) ? y : 20
+      const ax = -(store.state.screen.width / 2 - store.state.screen.mouseX) / xRange
+      const ay = (store.state.screen.height / 2 - store.state.screen.mouseY) / yRange
+      return {
+        transform: `rotateY(${ax}deg) rotateX(${ay}deg) scale(${scale !== undefined ? scale : 1})`
+      }
+    */
   }, []);
 
   useEffect(() => {

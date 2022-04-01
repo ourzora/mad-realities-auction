@@ -12,5 +12,5 @@ export const PageWrapper = styled.section<PageWrapperProps>`
   padding: 0 var(--space-md);
   display: flex;
   flex-direction: column;
-  margin-bottom: var(--footer-height);
+  margin-bottom: calc(var(--footer-height) * 2);
 `

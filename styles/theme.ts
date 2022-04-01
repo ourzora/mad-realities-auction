@@ -55,7 +55,6 @@ export const mediaConfigurationStyles = {
       display: grid;
       grid-gap: var(--space-sm);
     `,
-    /*
     fullMediaWrapper: () => css`
       margin: 0;
       position: relative;
@@ -63,7 +62,7 @@ export const mediaConfigurationStyles = {
       height: 0;
       padding-bottom: 100%;
       overflow-y: visible;
-      img {
+      img, video {
         object-fit: contain;
         ${mixins.absoluteFullCentered};
       }
@@ -74,6 +73,7 @@ export const mediaConfigurationStyles = {
         padding-bottom: 0;
       `}
     `,
+    /*
     mediaObject: () => css`
       z-index: 1;
       position: relative;
