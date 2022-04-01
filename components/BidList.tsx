@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useBidAggregate, BidAggregateType } from '../hooks/useBidAggregate'
 import { useENSAddress } from '@zoralabs/nft-hooks'
 
@@ -7,9 +7,11 @@ const PREFIX_ADDRESS = "0x";
 
 function BidInfo({bid}: {bid: BidAggregateType}) {
   const ens = useENSAddress(bid.bidder);
-  
+
+  useEffect(() => {console.log('ENS', ens)}, [ens])
+
   const trimmedETHAddress = useMemo(() => {
-    console.log(bid)
+    console.log(bid?.bidder)
     try {
       const addressFirst = bid.bidder.slice(0, 4 + PREFIX_ADDRESS.length);
       const addressLast = bid.bidder.slice(bid.bidder.length - 4);

@@ -1,5 +1,6 @@
 /* Only show tokens of a certain contract that have market activity */
 import { useMemo } from 'react'
+import { useENSAddress } from '@zoralabs/nft-hooks'
 
 export type BidAggregateType = {
   tokenId: string,
@@ -15,8 +16,6 @@ export const useBidAggregate = (tokens: any) => {
   const auctionList = useMemo(() => {
     try {
       const allBids = tokens.map((token: any) => {
-        console.log(token)
-        
         if (token?.markets[0]) {
           return (
             token?.markets[0].bids.map((item: any) => ({
@@ -31,7 +30,7 @@ export const useBidAggregate = (tokens: any) => {
           return {}
         }
       }).flat()
-      console.log('all bids', allBids)
+
       return allBids.filter((x: any) => x !== undefined)
     } catch (err) {
       console.log(err)
