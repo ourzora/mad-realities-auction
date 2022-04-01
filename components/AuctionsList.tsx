@@ -9,7 +9,6 @@ export const AuctionsList = ({ tokens }: { tokens: any[] }) => {
     <div
       css={css`
         width: 100%;
-        max-width: 1240px;
         margin: auto;
         display: flex;
         justify-content: center;

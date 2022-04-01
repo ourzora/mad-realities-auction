@@ -43,13 +43,13 @@ export default function GlobalStyles() {
           --display-font: 'Pricedown', Helvetica, Arial, sans-serif;
 
           /* SPACING */
-          --base-unit: 8px;
+          --base-unit: 10px;
           --space-sm: calc(var(--base-unit) * 2);
           --space-md: calc(var(--base-unit) * 3);
           --space-lg: calc(var(--base-unit) * 5);
 
           /* TYPOGRAPHY */
-          --text-01: calc(var(--base-unit) * 1.5);
+          --text-01: calc(var(--base-unit) * 1.65);
           --text-02: calc(var(--base-unit) * 2);
           --text-03: calc(var(--base-unit) * 3);
           --text-04: calc(var(--base-unit) * 4);
@@ -75,6 +75,9 @@ export default function GlobalStyles() {
 
           --dark-shadow: 
             3px 3px 30px #131313;
+
+            --light-shadow: 
+              0 0 10px rgba(0,0,0,.5);
 
           --warm-gradient:
             linear-gradient(90deg, 
@@ -201,6 +204,30 @@ export default function GlobalStyles() {
         /* CUSTOM */
         .button {
           ${buttonStyle};
+        }
+
+        .funky-header {
+          font-size: var(--text-04);
+          font-family: var(--display-font)!important;
+          text-shadow: var(--funky-text-shadow);
+          margin: 0;
+          padding-top: 0;
+          transform: rotate(-2deg);
+        }
+
+        .funky-button {
+          ${buttonStyle};
+          font-size: var(--text-04);
+          font-family: var(--display-font)!important;
+          width: 100%;
+          max-width: 400px;
+          border: 0;
+          padding-bottom: 20px;
+          z-index: 100;
+          background-color: pink;
+          ${media.hover`
+            background-color: #e7435f;
+          `}
         }
 
         /* UTIL */

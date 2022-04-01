@@ -9,6 +9,7 @@ function BidInfo({bid}: {bid: BidAggregateType}) {
   const ens = useENSAddress(bid.bidder);
   
   const trimmedETHAddress = useMemo(() => {
+    console.log(bid)
     try {
       const addressFirst = bid.bidder.slice(0, 4 + PREFIX_ADDRESS.length);
       const addressLast = bid.bidder.slice(bid.bidder.length - 4);

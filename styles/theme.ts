@@ -73,6 +73,35 @@ export const mediaConfigurationStyles = {
         padding-bottom: 0;
       `}
     `,
+    infoContainer: () => css`
+      padding: 0;
+      width: 100%;
+      * {
+        font-size: var(--text-01);
+      }
+    `,
+    propertiesGrid: () => css`
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: calc(var(--space-sm) / 2);
+      padding-top: var(--space-lg);
+    `,
+    propertiesItem: () => css`
+      border-radius: 500px;
+      padding: calc(var(--space-sm) / 2);
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: var(--warm-gradient);
+      box-shadow: var(--light-shadow);
+      width: 100%;
+    `,
+    propertiesLabel: () => css`
+      font-size: var(--text-02);
+      padding-bottom: 5px;
+    `
     /*
     mediaObject: () => css`
       z-index: 1;
@@ -119,11 +148,7 @@ export const mediaConfigurationStyles = {
       text-transform: uppercase;
       font-size: var(--text-03);
     `,
-    infoContainer: () => css`
-      padding: var(--space-sm);
-      border: 1px solid var(--black);
-      margin: 0 auto var(--space-sm);
-    `,
+    
     fullInfoProofAuthenticityContainer: () => css`
       padding: var(--space-sm) 0 0;
       display: grid;

@@ -147,3 +147,12 @@ export const inputStyle = css`
     }
   }
 `
+
+export const funkyHeader = css`
+  font-size: var(--text-04);
+  font-family: var(--display-font)!important;
+  text-shadow: var(--funky-text-shadow);
+  margin: 0;
+  padding-top: 0;
+  transform: rotate(-2deg);
+`
