@@ -51,7 +51,7 @@ export default function GlobalStyles() {
           /* TYPOGRAPHY */
           --text-01: calc(var(--base-unit) * 1.65);
           --text-02: calc(var(--base-unit) * 2);
-          --text-03: calc(var(--base-unit) * 3);
+          --text-03: calc(var(--base-unit) * 2.5);
           --text-04: calc(var(--base-unit) * 4);
           --text-05: calc(var(--base-unit) * 5);
 
@@ -103,7 +103,7 @@ export default function GlobalStyles() {
 
         ${media.xl`
           :root {
-            --base-unit: 13px;
+            --base-unit: 15px;
             --text-05: calc(var(--base-unit) * 7);
           }
         `}
@@ -143,8 +143,7 @@ export default function GlobalStyles() {
 
         header {
           height: var(--header-height);
-          position: sticky;
-          top: 0;
+          position: relative;
           z-index: var(--header-z);
           a {
             margin-right: 30px;
@@ -154,6 +153,10 @@ export default function GlobalStyles() {
               margin-right: 0;
             }
           }
+          ${media.xl`
+            position: sticky;
+            top: 0;
+          `}
         }
 
         .flex-row {
@@ -165,10 +168,10 @@ export default function GlobalStyles() {
         footer {
           height: var(--footer-height);
           position: relative;
-          bottom: 0;
-          left: 0;
           ${media.laptop`
             position: fixed;
+            bottom: 0;
+            left: 0;
           `}
         }
 
@@ -223,10 +226,10 @@ export default function GlobalStyles() {
 
         .funky-button {
           ${buttonStyle};
-          font-size: var(--text-04);
+          font-size: var(--text-03);
           font-family: var(--display-font)!important;
           width: 100%;
-          max-width: 400px;
+          max-width: 350px;
           border: 0;
           padding-bottom: 20px;
           z-index: 100;
@@ -297,6 +300,17 @@ export default function GlobalStyles() {
           font-size: var(--text-05);
         }
 
+        .subhead {
+          padding: 0 0 var(--space-lg);
+          max-width: 1000px;
+          margin: 0 auto;
+          text-align: center;
+          line-height: 1.25;
+          font-size: var(--text-03);
+          ${media.xl`
+            max-width: 1200px;
+          `}
+        }
 
         /* ZORA SPECIFIC -- CLEAN UP
            - WALLET MODAL
