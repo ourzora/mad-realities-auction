@@ -7,7 +7,7 @@ The world’s first interactive dating show where the community decides what hap
 
 ## SWEETEN THE POT, SPICE UP THE PLOT.
 
-Every week, we release and auction a new unique 1/1 representing the next episode of Proof of Love. Winners can put anyone in as a contestant on the next episode. Proceeds increase finale jackpot size.
+Every week, we release and auction a new unique 1/1 representing the next episode of Proof of Love. Winners can put anyone in as a contestant on the next episode, and sponsor the next episode. Proceeds increase finale jackpot size -- by participating in the auctions, you're directly making the show spicier.
 
 Auction ends live on screen at the end of the live aftershow. Episode starts at 8pm ET.
 
