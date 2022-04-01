@@ -73,6 +73,7 @@ export function HeroToken({token}: {token: any}) {
             }
             .zora-fullLabel {
               ${funkyHeader};
+              padding-bottom: var(--space-md);
             }
           `}
         >

@@ -236,6 +236,13 @@ export default function GlobalStyles() {
           `}
         }
 
+        .hero-image-wrapper {
+          height: 50vh;
+          position: relative;
+          z-index: 10;
+          filter: drop-shadow(0px 0px 15px #4c015f);
+        }
+
         /* UTIL */
         .code-wrapper {
           text-align: start;

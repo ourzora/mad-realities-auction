@@ -81,9 +81,13 @@ export const mediaConfigurationStyles = {
     `,
     propertiesGrid: () => css`
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       grid-gap: calc(var(--space-sm) / 2);
-      padding-top: var(--space-lg);
+      padding-top: var(--space-sm);
+      padding-bottom: var(--space-md);
+      ${mixins.media.laptop`
+        grid-template-columns: 1fr 1fr;
+      `}
     `,
     propertiesItem: () => css`
       border-radius: 500px;
@@ -100,7 +104,18 @@ export const mediaConfigurationStyles = {
     propertiesLabel: () => css`
       font-size: var(--text-02);
       padding-bottom: 5px;
-    `
+    `,
+    fullProofLink: () => css`
+      ${mixins.buttonStyle};
+      max-width: 350px;
+    `,
+    fullInfoProofAuthenticityContainer: () => css`
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: calc(var(--space-sm) / 2);
+      padding: var(--space-sm) 0 var(--space-md);
+    `,
     /*
     mediaObject: () => css`
       z-index: 1;

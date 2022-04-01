@@ -33,6 +33,8 @@ export const AuctionsList = ({ tokens }: { tokens: any[] }) => {
                 options={{initialData: token}}
                 id={tokenInfo.tokenId}
                 contract={tokenInfo.tokenContract}
+                showPerpetual
+                showBids
                 onClick={(evt) =>
                   router.push(
                     `/token/${tokenInfo.nft.contract.address}/${tokenInfo.nft.tokenId}`

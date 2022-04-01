@@ -10,18 +10,16 @@ import { HeroToken } from '../components/HeroToken'
 export default function Home({
   tokens,
   landingToken,
-  allTokens,
 }: {
-  tokens: any,
+  tokens: any[],
   landingToken: any,
-  allTokens: any[]
 }) {
   return (
     <PageWrapper>
       <Head />
       <h1 className="display-font">Live Auction</h1>
       <HeroToken token={landingToken} />
-      <BidList tokens={allTokens} />
+      <BidList tokens={tokens} />
       <h1 className="display-font">Past Auctions</h1>
       <AuctionsList tokens={tokens} />
     </PageWrapper>

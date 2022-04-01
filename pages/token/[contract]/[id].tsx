@@ -5,7 +5,8 @@ import { getToken, TokenProps } from '../../../services/getToken'
 import { Head } from '../../../components/HeadMeta'
 import { PageWrapper } from '../../../styles/components'
 import { TokenPreview } from '../../../components/manage'
-import { funkyWrapper } from '../../../styles/mixins'
+import { funkyHeader, funkyWrapper } from '../../../styles/mixins'
+import { NFTDescription } from '../../../components/NFTDescription'
 
 export default function Token({
   id,
@@ -25,16 +26,43 @@ export default function Token({
           options={{initialData}}
         >
           <AuctionManager renderMedia={TokenPreview}>
-            <FullComponents.MediaFull />
-            <div css={css`
-              ${funkyWrapper}
-            `}>
-              <FullComponents.MediaInfo />
-              <FullComponents.AuctionInfo />
-              {/* <BidButton /> */}
-              <FullComponents.ProofAuthenticity />
-              <FullComponents.NFTProperties />
-              <FullComponents.BidHistory />
+            <div className="hero-image-wrapper">
+              <FullComponents.MediaFull />
+            </div>
+            <div css={css`${funkyWrapper}`}>
+              <NFTDescription />
+              <div css={css`
+                .zora-infoContainer {
+                  background-color: yellow;
+                  border-radius: var(--space-md);
+                  padding: var(--space-sm);
+                  box-shadow: var(--light-shadow);
+                  * {
+                    color: var(--black);
+                    justify-content: center;
+                    text-align: center;
+                  }
+                  .zora-addressLink {
+                    position: relative;
+                    margin: 0 auto;
+                    display: flex;
+                  }
+                }
+              `}>
+                <FullComponents.AuctionInfo />
+              </div>
+              <div css={css`
+                .zora-fullLabel {
+                  ${funkyHeader};
+                  opacity: 1;
+                  transform: rotate(0deg);
+                  text-align: center;
+                }
+              `}>
+                <FullComponents.ProofAuthenticity />
+                <FullComponents.NFTProperties />
+                <FullComponents.BidHistory />
+              </div>
             </div>
           </AuctionManager>
         </NFTFullPage>

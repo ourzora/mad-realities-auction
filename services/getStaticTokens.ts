@@ -20,15 +20,6 @@ export const getStaticTokens: GetStaticProps = async () => {
     0
   )
 
-  var filteredTokens = nfts.filter((item: any) => { 
-    try {
-      return item?.nft?.tokenId !== LANDING_HERO_TOKEN
-    } catch (err) {
-      console.log(err)
-      return item
-    }
-  });
-
   /* Hero Token */
   const strategy = new ZoraV2IndexerStrategy(networkId);
   
@@ -52,8 +43,7 @@ export const getStaticTokens: GetStaticProps = async () => {
   return {
     props: {
       landingToken: nft ? prepareJson(nft) : null,
-      tokens: prepareJson(filteredTokens),
-      allTokens: prepareJson(nfts),
+      tokens: prepareJson(nfts),
     },
     revalidate: 60,
   }
