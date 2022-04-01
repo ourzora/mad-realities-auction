@@ -61,7 +61,7 @@ export function HeroToken({token}: {token: any}) {
             target="_blank"
             rel="noreferrer"
           >
-            View on Zora
+            Bid on Zora
           </a>
         </div>
         <div

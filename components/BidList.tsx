@@ -52,7 +52,7 @@ export function BidList({tokens}: {tokens?: any[]}) {
       padding-top: var(--space-lg);
       margin: 0 auto var(--space-lg);
     `}>
-      <h2 className="display-font text-05">All Bids</h2>
+      <h2 className="display-font text-05">If u bid ur sexy</h2>
       <div css={css`
         width: 100%;
         max-width: 960px;

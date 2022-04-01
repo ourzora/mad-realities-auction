@@ -1,3 +1,3 @@
-# Mad Realtites
+# Mad Realities
 
-he world’s first interactive dating show where the community decides what happens (and who happens).
+The world’s first interactive dating show where the community decides what happens (and who happens).

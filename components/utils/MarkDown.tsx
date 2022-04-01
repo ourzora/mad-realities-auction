@@ -16,14 +16,14 @@ export const MarkDown = ({
         css`
           width: 100%;
           * {
-            color: var(--black);
+            color: var(--white);
           }
+          h1,
           h2,
           h3,
           h4 {
-            border-bottom: var(--border-light);
-            padding-bottom: var(--base-unit);
-            margin-bottom: var(--space-sm);
+            font-family: var(--display-font)!important;
+            padding-bottom: var(--space-md);
           }
           img {
             width: 100%;

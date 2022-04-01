@@ -57,7 +57,7 @@ export default function GlobalStyles() {
 
           /* LAYOUT */
           --header-z: 100;
-          --header-height: calc(var(--base-unit) * 10);
+          --header-height: calc(var(--base-unit) * 8);
           --footer-height: calc(var(--base-unit) * 6);
           --content-width-md: 960px;
           --content-width-lg: ${returnBreakpoint('desktop')};
@@ -150,6 +150,9 @@ export default function GlobalStyles() {
             margin-right: 30px;
             font-family: var(--display-font)!important;
             font-size: var(--text-04);
+            &:last-of-type {
+              margin-right: 0;
+            }
           }
         }
 
@@ -161,9 +164,12 @@ export default function GlobalStyles() {
 
         footer {
           height: var(--footer-height);
-          position: fixed;
+          position: relative;
           bottom: 0;
           left: 0;
+          ${media.laptop`
+            position: fixed;
+          `}
         }
 
         /* TYPOGRPAHY */

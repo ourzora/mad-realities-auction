@@ -67,8 +67,7 @@ export const mediaConfigurationStyles = {
         ${mixins.absoluteFullCentered};
       }
       ${mixins.media.laptop`
-        height: 50vh;
-        min-height: 35rem;
+        height: 100%;
         max-height: 65rem;
         padding-bottom: 0;
       `}

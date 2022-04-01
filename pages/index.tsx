@@ -19,7 +19,7 @@ export default function Home({
   return (
     <PageWrapper>
       <Head />
-      <h1 className="display-font">Current Auction</h1>
+      <h1 className="display-font">Live Auction</h1>
       <HeroToken token={landingToken} />
       <BidList tokens={allTokens} />
       <h1 className="display-font">Past Auctions</h1>
