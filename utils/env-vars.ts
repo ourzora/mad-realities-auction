@@ -19,7 +19,7 @@ if (!CURATOR_ID && !CONTRACT_ADDRESSES) {
 export const APP_TITLE = process.env.NEXT_PUBLIC_APP_TITLE
 export const APP_DESCRIPTION = process.env.NEXT_PUBLIC_DEFAULT_DESCRIPTION || ''
 export const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || ''
-export const DEFAULT_OG_CARD = `${BASE_URL}/meta-content/social-card.jpg`
+export const DEFAULT_OG_CARD = `${BASE_URL}/mad_house_link_preview.png`
 export const FAVICON = `${BASE_URL}/mad-icon.png`
 
 export const RPC_URL: string | undefined = process.env.NEXT_PUBLIC_RPC_URL;
@@ -32,11 +32,11 @@ export const HOSTED_BID_FLOW =
 
 export const LANDING_HERO_TOKEN =
   process.env.NEXT_PUBLIC_FEATURED_AUCTION_ID === undefined
-    ? false
+    ? undefined
     : process.env.NEXT_PUBLIC_FEATURED_AUCTION_ID
 
-export const META_TOKEN =
-  process.env.NEXT_PUBLIC_OG_DATA_TOKEN_ID === undefined
+export const AUCTION_LIVE =
+  process.env.NEXT_PUBLIC_AUCTION_LIVE === undefined
     ? false
-    : process.env.NEXT_PUBLIC_OG_DATA_TOKEN_ID
+    : process.env.NEXT_PUBLIC_AUCTION_LIVE
   

@@ -1,4 +1,4 @@
-import { CONTRACT_ADDRESSES, NETWORK_ID, LANDING_HERO_TOKEN } from '../utils/env-vars'
+import { CONTRACT_ADDRESSES, NETWORK_ID, LANDING_HERO_TOKEN, AUCTION_LIVE } from '../utils/env-vars'
 import { GetStaticProps } from 'next'
 import { ZoraIndexerV1DataSource } from '@zoralabs/nft-hooks/dist/backends'
 import { prepareJson } from '@zoralabs/nft-hooks/dist/fetcher/NextUtils'
@@ -24,26 +24,31 @@ export const getStaticTokens: GetStaticProps = async () => {
   const strategy = new ZoraV2IndexerStrategy(networkId);
   
   let nft = null
+  let metaImage = null
+  let metaDescription = null
+  
+  console.log(AUCTION_LIVE)
 
-  try {
-    nft = LANDING_HERO_TOKEN && await strategy.fetchNFT(contractAddress, LANDING_HERO_TOKEN)
-  } catch (err) {
-    console.log(err)
-  }
-
-  let metaNFT = null
-
-  try {
-    metaNFT = LANDING_HERO_TOKEN && await strategy.fetchNFT(contractAddress, LANDING_HERO_TOKEN)
-    console.log(metaNFT)
-  } catch (err) {
-    console.log(err)
+  if (
+    (LANDING_HERO_TOKEN !== null && LANDING_HERO_TOKEN !== undefined)
+    && AUCTION_LIVE === 'true')
+  {
+    try {
+      const nftData = await strategy.fetchNFT(contractAddress, LANDING_HERO_TOKEN)
+      nft = prepareJson(nftData)
+      metaImage = nft?.metadata?.image
+      metaDescription = nft?.metadata.name
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return {
     props: {
-      landingToken: nft ? prepareJson(nft) : null,
+      landingToken: nft,
       tokens: prepareJson(nfts),
+      metaImage: metaImage,
+      metaDescription: metaDescription,
     },
     revalidate: 60,
   }
