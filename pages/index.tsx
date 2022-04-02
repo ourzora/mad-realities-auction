@@ -12,18 +12,21 @@ export default function Home({
   landingToken,
   metaImage,
   metaDescription,
+  metaTitle
 }: {
   tokens: any[],
   landingToken: any,
   metaImage: string | undefined,
   metaDescription: string | undefined,
+  metaTitle: string | undefined,
 }) {
   return (
     <PageWrapper>
       <Head
         /* if you want this to be dynamic then check the getStaticTokens service
-        description={metaDescription}
         */
+        title={metaTitle}
+        description={metaDescription}
         ogImage={metaImage}
       />
       {landingToken
