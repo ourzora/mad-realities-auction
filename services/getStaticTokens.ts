@@ -24,26 +24,26 @@ export const getStaticTokens: GetStaticProps = async () => {
   const strategy = new ZoraV2IndexerStrategy(networkId);
   
   let nft = null
-
-  try {
-    nft = LANDING_HERO_TOKEN && await strategy.fetchNFT(contractAddress, LANDING_HERO_TOKEN)
-  } catch (err) {
-    console.log(err)
-  }
-
-  let metaNFT = null
-
-  try {
-    metaNFT = LANDING_HERO_TOKEN && await strategy.fetchNFT(contractAddress, LANDING_HERO_TOKEN)
-    console.log(metaNFT)
-  } catch (err) {
-    console.log(err)
+  let metaImage = null
+  let metaDescription = null
+  
+  if (LANDING_HERO_TOKEN !== null && LANDING_HERO_TOKEN !== undefined) {
+    try {
+      const nftData = await strategy.fetchNFT(contractAddress, LANDING_HERO_TOKEN)
+      nft = prepareJson(nftData)
+      metaImage = nft?.metadata?.image
+      metaDescription = nft?.metadata.name
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   return {
     props: {
-      landingToken: nft ? prepareJson(nft) : null,
+      landingToken: nft,
       tokens: prepareJson(nfts),
+      metaImage: metaImage,
+      metaDescription: metaDescription,
     },
     revalidate: 60,
   }
