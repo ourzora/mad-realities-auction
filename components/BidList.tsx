@@ -95,7 +95,7 @@ export function BidList({tokens}: {tokens?: any[]}) {
     `}>
       <h1 className="display-font text-05">If u bid ur sexy</h1>
       <h4 className="subhead">
-      We’re taking notes on who’s participating 🔥 and bidders will get special gifts sent as a thank you 🎁
+      We’re taking notes on who’s participating 🔥 <br /> Bidders will get special gifts sent as a thank you 🎁
       </h4>
       <div css={css`
         width: 100%;
