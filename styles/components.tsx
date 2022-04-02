@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { media } from './mixins'
 
 interface PageWrapperProps {
   grid?: boolean
@@ -12,5 +13,8 @@ export const PageWrapper = styled.section<PageWrapperProps>`
   padding: 0 var(--space-md);
   display: flex;
   flex-direction: column;
-  margin-bottom: calc(var(--footer-height) * 2);
+  margin-bottom: 0;
+  ${media.laptop`
+    margin-bottom: calc(var(--footer-height) * 2);
+  `}
 `

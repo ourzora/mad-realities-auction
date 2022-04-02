@@ -57,8 +57,8 @@ export default function GlobalStyles() {
 
           /* LAYOUT */
           --header-z: 100;
-          --header-height: calc(var(--base-unit) * 8);
-          --footer-height: calc(var(--base-unit) * 6);
+          --header-height: calc(var(--base-unit) * 10);
+          --footer-height: calc(var(--base-unit) * 8);
           --content-width-md: 960px;
           --content-width-lg: ${returnBreakpoint('desktop')};
           --content-width-xl: ${returnBreakpoint('xl')};
@@ -98,6 +98,7 @@ export default function GlobalStyles() {
           :root {
             --base-unit: 12px;
             --text-05: calc(var(--base-unit) * 6);
+            --footer-height: calc(var(--base-unit) * 6);
           }
         `}
 
@@ -142,9 +143,14 @@ export default function GlobalStyles() {
         }
 
         header {
-          height: var(--header-height);
+          height: auto;
           position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
           z-index: var(--header-z);
+          padding: var(--space-md) var(--space-sm) var(--space-lg);
+          gap: var(--space-sm);
           a {
             margin-right: 30px;
             font-family: var(--display-font)!important;
@@ -153,6 +159,12 @@ export default function GlobalStyles() {
               margin-right: 0;
             }
           }
+          ${media.laptop`
+            height: var(--header-height);
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 0 var(--space-sm);
+          `}
           ${media.xl`
             position: sticky;
             top: 0;
@@ -231,19 +243,24 @@ export default function GlobalStyles() {
           width: 100%;
           max-width: 350px;
           border: 0;
-          padding-bottom: 20px;
           z-index: 100;
           background-color: pink;
+          padding-bottom: 15px;
+          ${media.tablet`
+            padding-bottom: 20px;
+          `}
           ${media.hover`
             background-color: #e7435f;
           `}
         }
 
         .hero-image-wrapper {
-          height: 50vh;
           position: relative;
           z-index: 10;
           filter: drop-shadow(0px 0px 15px #4c015f);
+          ${media.laptop` 
+            height: 50vh;
+          `}
         }
 
         /* UTIL */
