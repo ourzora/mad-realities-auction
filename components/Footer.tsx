@@ -2,6 +2,7 @@ import { css } from "@emotion/react"
 import { Zorb } from "./Zorb"
 import { CONTRACT_ADDRESSES } from "../utils/env-vars"
 import { useCallback, useState } from "react"
+import { media } from "../styles/mixins"
 
 export const Footer = () => {
   const [isHovered, setIsHovered] = useState(false)
@@ -28,8 +29,10 @@ export const Footer = () => {
         className="text-01"
         css={css`
           pointer-events: none;
-          opacity: ${isHovered ? '1' : '0'};
           transition: all 300ms ease-in;
+          @media (hover: hover) {
+            opacity: ${isHovered ? '1' : '0'};
+          }
         `}
         style={{transform: `translateX(${isHovered ? '0' : '15px'})`}}
       >

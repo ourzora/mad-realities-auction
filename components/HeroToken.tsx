@@ -5,11 +5,9 @@ import { PricingComponent } from '@zoralabs/nft-components/dist/nft-preview/Pric
 import { NFTFullPage, FullComponents } from '@zoralabs/nft-components'
 import { CONTRACT_ADDRESSES } from '../utils/env-vars'
 import Link from 'next/link'
+import { media } from '../styles/mixins'
 
 export function HeroToken({token}: {token: any}) {
-  // const { position } = useHoverPerspective()
-  // useEffect(() => {console.log(position)}, [position])
-
   return (
     <NFTFullPage
       contract={CONTRACT_ADDRESSES as string}
@@ -31,12 +29,7 @@ export function HeroToken({token}: {token: any}) {
             href={`/token/${CONTRACT_ADDRESSES}/${token?.nft?.tokenId}`}
             passHref
           >
-            <a css={css`
-              height: 50vh;
-              position: relative;
-              z-index: 10;
-              filter: drop-shadow(0px 0px 15px #4c015f);
-            `}>
+            <a className="hero-image-wrapper">
               <FullComponents.MediaFull />
             </a>
           </Link>
@@ -64,6 +57,7 @@ export function HeroToken({token}: {token: any}) {
             css={css`
               flex-wrap: wrap;
               justify-content: center;
+              gap: var(--space-sm);
             `}
           >
             <a

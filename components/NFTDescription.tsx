@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import { NFTDataContext } from '@zoralabs/nft-components'
 import { useContext, useMemo } from 'react'
 import { MarkDown } from './utils'
+import { media } from '../styles/mixins'
 
 export function NFTDescription() {
   const { data } = useContext(NFTDataContext)
@@ -28,7 +29,10 @@ export function NFTDescription() {
       <MarkDown
         markdown={description}
         styleOverrides={css`
-          padding: 0 var(--space-md);
+          padding: 0;
+          ${media.laptop`
+            padding: 0 var(--space-md);
+          `}
           * {
             color: var(--white);
             font-size: var(--text-01);
