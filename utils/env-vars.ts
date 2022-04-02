@@ -35,8 +35,8 @@ export const LANDING_HERO_TOKEN =
     ? undefined
     : process.env.NEXT_PUBLIC_FEATURED_AUCTION_ID
 
-export const META_TOKEN =
-  process.env.NEXT_PUBLIC_OG_DATA_TOKEN_ID === undefined
+export const AUCTION_LIVE =
+  process.env.NEXT_PUBLIC_AUCTION_LIVE === undefined
     ? false
-    : process.env.NEXT_PUBLIC_OG_DATA_TOKEN_ID
+    : process.env.NEXT_PUBLIC_AUCTION_LIVE
   

@@ -1,4 +1,4 @@
-import { CONTRACT_ADDRESSES, NETWORK_ID, LANDING_HERO_TOKEN } from '../utils/env-vars'
+import { CONTRACT_ADDRESSES, NETWORK_ID, LANDING_HERO_TOKEN, AUCTION_LIVE } from '../utils/env-vars'
 import { GetStaticProps } from 'next'
 import { ZoraIndexerV1DataSource } from '@zoralabs/nft-hooks/dist/backends'
 import { prepareJson } from '@zoralabs/nft-hooks/dist/fetcher/NextUtils'
@@ -27,7 +27,12 @@ export const getStaticTokens: GetStaticProps = async () => {
   let metaImage = null
   let metaDescription = null
   
-  if (LANDING_HERO_TOKEN !== null && LANDING_HERO_TOKEN !== undefined) {
+  console.log(AUCTION_LIVE)
+
+  if (
+    (LANDING_HERO_TOKEN !== null && LANDING_HERO_TOKEN !== undefined)
+    && AUCTION_LIVE === 'true')
+  {
     try {
       const nftData = await strategy.fetchNFT(contractAddress, LANDING_HERO_TOKEN)
       nft = prepareJson(nftData)

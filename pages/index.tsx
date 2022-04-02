@@ -21,7 +21,9 @@ export default function Home({
   return (
     <PageWrapper>
       <Head
+        /* if you want this to be dynamic then check the getStaticTokens service
         description={metaDescription}
+        */
         ogImage={metaImage}
       />
       {landingToken
