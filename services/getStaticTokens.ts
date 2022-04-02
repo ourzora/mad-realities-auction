@@ -26,6 +26,7 @@ export const getStaticTokens: GetStaticProps = async () => {
   let nft = null
   let metaImage = null
   let metaDescription = null
+  let metaTitle = null
   
   console.log(AUCTION_LIVE)
 
@@ -37,7 +38,8 @@ export const getStaticTokens: GetStaticProps = async () => {
       const nftData = await strategy.fetchNFT(contractAddress, LANDING_HERO_TOKEN)
       nft = prepareJson(nftData)
       metaImage = nft?.metadata?.image
-      metaDescription = nft?.metadata.name
+      metaDescription = `Auction for ${nft?.metadata.name} ends 9pm ET live on the Proof of Love aftershow. Winner can put any contestant in and sponsor the next episode.`
+      metaTitle = `New Auction for ${nft?.metadata.name} is LIVE and ends Sun 9pm ET at Mad House`
     } catch (err) {
       console.log(err)
     }
@@ -49,6 +51,7 @@ export const getStaticTokens: GetStaticProps = async () => {
       tokens: prepareJson(nfts),
       metaImage: metaImage,
       metaDescription: metaDescription,
+      metaTitle: metaTitle,
     },
     revalidate: 60,
   }

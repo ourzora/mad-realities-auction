@@ -12,18 +12,21 @@ export default function Home({
   landingToken,
   metaImage,
   metaDescription,
+  metaTitle
 }: {
   tokens: any[],
   landingToken: any,
   metaImage: string | undefined,
   metaDescription: string | undefined,
+  metaTitle: string | undefined,
 }) {
   return (
     <PageWrapper>
       <Head
         /* if you want this to be dynamic then check the getStaticTokens service
-        description={metaDescription}
         */
+        title={metaTitle}
+        description={metaDescription}
         ogImage={metaImage}
       />
       {landingToken
@@ -31,9 +34,9 @@ export default function Home({
             <h1 className="display-font">
               Live Auction
             </h1>
-            <h2 className="subhead">
-              SWEETEN THE POT, SPICE UP THE PLOT. Winner gets two special powers: put anyone in as a contestant and sponsor the season finale. Proceeds increase finale jackpot size.
-            </h2>
+            <h4 className="subhead">
+              Put in a contestant and sponsor the next episode. <br/> Proceeds increase finale jackpot size.
+            </h4>
             <HeroToken token={landingToken} />
           </>
         : <NoAuctionHero />
@@ -46,9 +49,9 @@ export default function Home({
       >
         Mad House
       </h1>
-      <h3 className="subhead">
+      {/* <h4 className="subhead">
         Every week, we auction a unique NFT that gives special interactivity powers in the Proof of Love Genesis Season and contributes to the season finale jackpot prize.
-      </h3>
+      </h4> */}
       <AuctionsList tokens={tokens} />
       <BidList tokens={tokens} />
     </PageWrapper>
