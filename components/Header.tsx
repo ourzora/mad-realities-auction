@@ -15,7 +15,7 @@ export const Header = () => {
               height: auto;
             }
           `}>
-            <img src="mr-logo-chunky.png" alt={APP_TITLE} />
+            <img src="/mr-logo-chunky.png" alt={APP_TITLE} />
           </div>
         </NavLink>
         <NavLink passHref href='/about'>
