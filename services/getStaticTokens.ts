@@ -39,7 +39,7 @@ export const getStaticTokens: GetStaticProps = async () => {
       nft = prepareJson(nftData)
       metaImage = nft?.metadata?.image
       metaDescription = `Auction for ${nft?.metadata.name} ends 9pm ET live on the Proof of Love aftershow. Winner can put any contestant in and sponsor the next episode.`
-      metaTitle = `New Auction for ${nft?.metadata.name} is LIVE at Mad House`
+      metaTitle = `New Auction for ${nft?.metadata.name} is LIVE and ends Sun 9pm ET at Mad House`
     } catch (err) {
       console.log(err)
     }
