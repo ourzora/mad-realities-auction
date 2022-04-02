@@ -32,7 +32,7 @@ export default function Home({
               Live Auction
             </h1>
             <h4 className="subhead">
-              Put anyone in as a contestant and sponsor the next episode. Proceeds increase finale jackpot size.
+              Put in a contestant and sponsor the next episode. <br/> Proceeds increase finale jackpot size.
             </h4>
             <HeroToken token={landingToken} />
           </>

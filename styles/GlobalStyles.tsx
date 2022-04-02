@@ -323,7 +323,7 @@ export default function GlobalStyles() {
           margin: 0 auto;
           text-align: center;
           line-height: 1.25;
-          font-size: var(--text-03);
+          font-size: var(--text-02);
           ${media.xl`
             max-width: 1200px;
           `}
