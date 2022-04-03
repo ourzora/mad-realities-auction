@@ -1,12 +1,15 @@
 import { useContext, Fragment } from 'react'
 import { NFTDataContext } from '@zoralabs/nft-components'
+/*
 import { Button } from '@zoralabs/nft-components/dist/components/Button'
 import { useManageAuction } from '@zoralabs/manage-auction-hooks'
 import { HOSTED_BID_FLOW } from '../../utils/env-vars'
-
+*/
 export const BidButton = () => {
-  const { openBidAuction } = useManageAuction()
-  const { data } = useContext(NFTDataContext)
+  // const { openBidAuction } = useManageAuction()
+  const {
+    nft: { data },
+  } = useContext(NFTDataContext)
 
   if (
     !data

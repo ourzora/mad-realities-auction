@@ -84,6 +84,8 @@ function BidInfo({bid}: {bid: BidAggregateType}) {
 
 export function BidList({tokens}: {tokens?: any[]}) {
   const allBids = useBidAggregate(tokens)
+  useEffect(() => { console.log('ALL BIDS', allBids) }, [allBids])
+
   return (
     <div css={css`
       width: 100%;

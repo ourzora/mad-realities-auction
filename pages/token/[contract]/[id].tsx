@@ -21,36 +21,52 @@ export default function Token({
       <Head title={name} description={description} ogImage={image} />
       <PageWrapper>
         <NFTFullPage
+          useBetaIndexer
           contract={contract as string}
           id={id as string}
-          options={{initialData}}
+          initialData={initialData}
+          // NFT Components pre config: options={{initialData}}
         >
           <AuctionManager renderMedia={TokenPreview}>
             <div className="hero-image-wrapper">
               <FullComponents.MediaFull />
             </div>
             <div css={css`${funkyWrapper}`}>
-              <NFTDescription />
-              <div css={css`
-                .zora-infoContainer {
-                  background-color: yellow;
-                  border-radius: var(--space-md);
-                  padding: var(--space-sm);
-                  box-shadow: var(--light-shadow);
-                  * {
-                    color: var(--black);
-                    justify-content: center;
-                    text-align: center;
+              <NFTDescription>
+                <div css={css`
+                  .zora-infoContainer {
+                    background-color: yellow;
+                    border-radius: var(--space-md);
+                    padding: var(--space-sm);
+                    box-shadow: var(--light-shadow);
+                    * {
+                      color: var(--black);
+                      justify-content: center;
+                      text-align: center;
+                    }
+                    .zora-addressLink {
+                      position: relative;
+                      margin: 0 auto;
+                      display: flex;
+                    }
                   }
-                  .zora-addressLink {
-                    position: relative;
-                    margin: 0 auto;
-                    display: flex;
-                  }
-                }
-              `}>
-                <FullComponents.AuctionInfo />
-              </div>
+                `}>
+                  <div>
+                    <FullComponents.AuctionInfo />
+                    <a
+                      className="funky-button"
+                      href={`https://zora.co/collections/${contract}/${id}`}
+                      target="_blank"
+                      rel="noreferrer"
+                      css={css`
+                        margin-top: var(--space-sm);
+                      `}
+                    >
+                      Bid on Zora
+                    </a>
+                  </div>
+                </div>
+              </NFTDescription>
               <div css={css`
                 .zora-fullLabel {
                   ${funkyHeader};
@@ -58,8 +74,31 @@ export default function Token({
                   transform: rotate(0deg);
                   text-align: center;
                 }
+                .zora-fullPageHistoryList {
+                  margin-top: var(--space-sm);
+                }
               `}>
-                <FullComponents.ProofAuthenticity />
+                <div
+                  css={css`
+                    display: flex;
+                    flex-direction: column;
+                  `}
+                > 
+                  <FullComponents.ProofAuthenticity />
+                  {/* 
+                  <a
+                    href={`https://zora.co/collections/${contract}/${id}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="zora-fullProofLink"
+                    css={{
+
+                    }}
+                  >
+                    Bid on Zora
+                  </a>
+                  */}
+                </div>
                 <FullComponents.NFTProperties />
                 <FullComponents.BidHistory />
               </div>

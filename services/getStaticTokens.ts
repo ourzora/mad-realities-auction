@@ -1,3 +1,80 @@
+import {
+  CONTRACT_ADDRESSES,
+  NETWORK_ID,
+  LANDING_HERO_TOKEN,
+  AUCTION_LIVE
+} from '../utils/env-vars'
+import {
+  GetStaticProps
+} from 'next'
+import {
+  FetchStaticData,
+  MediaFetchAgent,
+  NetworkIDs,
+} from '@zoralabs/nft-hooks'
+
+export const getStaticTokens: GetStaticProps = async () => {
+  const fetchAgent = new MediaFetchAgent(
+    NETWORK_ID as NetworkIDs
+  )
+
+  const contractAddress = CONTRACT_ADDRESSES as string
+
+  const tokens = await FetchStaticData.fetchZoraIndexerList(fetchAgent, {
+    collectionAddresses: contractAddress
+      ? contractAddress.split(',')
+      : undefined,
+    limit: 40,
+    offset: 0,
+  })
+
+  let nft = null
+  let metaImage = null
+  let metaDescription = null
+  let metaTitle = null
+
+  if (
+    (LANDING_HERO_TOKEN !== null && LANDING_HERO_TOKEN !== undefined)
+    && AUCTION_LIVE === 'true')
+  {
+    try {
+      nft = await FetchStaticData.fetchZoraIndexerItem(fetchAgent, {
+        tokenId: LANDING_HERO_TOKEN,
+        collectionAddress: contractAddress,
+      })
+      const tokenMetadata = FetchStaticData.getIndexerServerTokenInfo(nft)
+      metaImage = tokenMetadata?.metadata?.image
+      metaDescription = `Auction for ${tokenMetadata?.metadata.name} ends 9pm ET live on the Proof of Love aftershow. Winner can put any contestant in and sponsor the next episode.`
+      metaTitle = `New Auction for ${tokenMetadata?.metadata.name} is LIVE and ends Sun 9pm ET at Mad House`
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  return {
+    props: {
+      landingToken: nft,
+      tokens: tokens,
+      metaImage: metaImage,
+      metaDescription: metaDescription,
+      metaTitle: metaTitle,
+    },
+    revalidate: 30,
+  }
+
+  /*
+  return {
+    props: {
+      tokens,
+    },
+    revalidate: 60,
+  }
+  */
+}
+
+/*
+PreRelease NFT Hooks service:
+
 import { CONTRACT_ADDRESSES, NETWORK_ID, LANDING_HERO_TOKEN, AUCTION_LIVE } from '../utils/env-vars'
 import { GetStaticProps } from 'next'
 import { ZoraIndexerV1DataSource } from '@zoralabs/nft-hooks/dist/backends'
@@ -20,7 +97,6 @@ export const getStaticTokens: GetStaticProps = async () => {
     0
   )
 
-  /* Hero Token */
   const strategy = new ZoraV2IndexerStrategy(networkId);
   
   let nft = null
@@ -56,3 +132,4 @@ export const getStaticTokens: GetStaticProps = async () => {
     revalidate: 60,
   }
 }
+*/
