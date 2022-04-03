@@ -21,9 +21,11 @@ export default function Token({
       <Head title={name} description={description} ogImage={image} />
       <PageWrapper>
         <NFTFullPage
+          useBetaIndexer
           contract={contract as string}
           id={id as string}
-          options={{initialData}}
+          initialData={initialData}
+          // NFT Components pre config: options={{initialData}}
         >
           <AuctionManager renderMedia={TokenPreview}>
             <div className="hero-image-wrapper">

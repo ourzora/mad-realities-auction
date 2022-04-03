@@ -5,14 +5,15 @@ import { PricingComponent } from '@zoralabs/nft-components/dist/nft-preview/Pric
 import { NFTFullPage, FullComponents } from '@zoralabs/nft-components'
 import { CONTRACT_ADDRESSES } from '../utils/env-vars'
 import Link from 'next/link'
-import { media } from '../styles/mixins'
 
 export function HeroToken({token}: {token: any}) {
   return (
     <NFTFullPage
       contract={CONTRACT_ADDRESSES as string}
-      id={token?.nft?.tokenId as string}
-      options={{ token }}
+      id={token?.nft?.tokenData?.tokenId as string}
+      useBetaIndexer
+      initialData={token}
+      // options={{ token }}
     >
       <AuctionManager renderMedia={TokenPreview}>
         <div css={css`
@@ -26,7 +27,7 @@ export function HeroToken({token}: {token: any}) {
           padding-bottom: var(--space-md);
         `}>
           <Link
-            href={`/token/${CONTRACT_ADDRESSES}/${token?.nft?.tokenId}`}
+            href={`/token/${CONTRACT_ADDRESSES}/${token?.nft?.tokenData?.tokenId}`}
             passHref
           >
             <a className="hero-image-wrapper">
@@ -62,14 +63,14 @@ export function HeroToken({token}: {token: any}) {
           >
             <a
               className="funky-button"
-              href={`https://zora.co/collections/${CONTRACT_ADDRESSES}/${token?.nft?.tokenId}`}
+              href={`https://zora.co/collections/${CONTRACT_ADDRESSES}/${token?.nft?.tokenData?.tokenId}`}
               target="_blank"
               rel="noreferrer"
             >
               Bid on Zora
             </a>
             <Link
-              href={`/token/${CONTRACT_ADDRESSES}/${token?.nft?.tokenId}`}
+              href={`/token/${CONTRACT_ADDRESSES}/${token?.nft?.tokenData?.tokenId}`}
               passHref
             >
               <a className="funky-button">
