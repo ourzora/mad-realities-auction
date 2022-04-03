@@ -43,6 +43,9 @@ export const getStaticTokens: GetStaticProps = async () => {
         collectionAddress: contractAddress,
       })
       const tokenMetadata = FetchStaticData.getIndexerServerTokenInfo(nft)
+      /* console.log tokenMetadata for other media - maybe twitter doesn't like big gifs?
+         you could use env var and hardcode an optimized image for this too.
+      */
       metaImage = tokenMetadata?.metadata?.image
       metaDescription = `Auction for ${tokenMetadata?.metadata.name} ends 9pm ET live on the Proof of Love aftershow. Winner can put any contestant in and sponsor the next episode.`
       metaTitle = `New Auction for ${tokenMetadata?.metadata.name} is LIVE and ends Sun 9pm ET at Mad House`
