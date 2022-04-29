@@ -23,9 +23,15 @@ export default function GlobalStyles() {
           }
 
           @keyframes funkyGradientAnimation {
-            0%{background-position:0% 50%}
-            50%{background-position:100% 50%}
-            100%{background-position:0% 50%}
+            0% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+            100% {
+              background-position: 0% 50%;
+            }
           }
 
           /* COLORS */
@@ -63,30 +69,27 @@ export default function GlobalStyles() {
           --content-width-lg: ${returnBreakpoint('desktop')};
           --content-width-xl: ${returnBreakpoint('xl')};
 
-          --funky-shadow:
-              1px 1px 3px #000, 
-              3px 3px 10px purple,
-              3px 3px 15px yellow,
-              3px 3px 30px #ff9050;
+          --funky-shadow: 1px 1px 3px #000, 3px 3px 10px purple,
+            3px 3px 15px yellow, 3px 3px 30px #ff9050;
 
-          --funky-text-shadow:
-              1px 1px 1px #000, 
-              3px 3px 5px blue;
+          --funky-text-shadow: 1px 1px 1px #000, 3px 3px 5px blue;
 
-          --dark-shadow: 
-            3px 3px 30px #131313;
+          --dark-shadow: 3px 3px 30px #131313;
 
-            --light-shadow: 
-              0 0 10px rgba(0,0,0,.5);
+          --light-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
-          --warm-gradient:
-            linear-gradient(90deg, 
-            rgba(131,58,180,1) 0%, 
-            rgba(253,29,29,1) 50%, 
-            rgba(252,176,69,1) 100%);
+          --warm-gradient: linear-gradient(
+            90deg,
+            rgba(131, 58, 180, 1) 0%,
+            rgba(253, 29, 29, 1) 50%,
+            rgba(252, 176, 69, 1) 100%
+          );
 
-          --green-gradient:
-            linear-gradient(78deg, rgba(69,253,29,1) 45%, rgba(69,252,245,1) 100%);
+          --green-gradient: linear-gradient(
+            78deg,
+            rgba(69, 253, 29, 1) 45%,
+            rgba(69, 252, 245, 1) 100%
+          );
 
           --color-a: #ff1f8c;
           --color-b: yellow;
@@ -118,7 +121,11 @@ export default function GlobalStyles() {
 
         html {
           background-color: var(--black);
-          background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(75,5,130,1) 100%);
+          background: linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(75, 5, 130, 1) 100%
+          );
         }
 
         main {
@@ -153,7 +160,7 @@ export default function GlobalStyles() {
           gap: var(--space-sm);
           a {
             margin-right: 30px;
-            font-family: var(--display-font)!important;
+            font-family: var(--display-font) !important;
             font-size: var(--text-04);
             &:last-of-type {
               margin-right: 0;
@@ -229,7 +236,7 @@ export default function GlobalStyles() {
 
         .funky-header {
           font-size: var(--text-04);
-          font-family: var(--display-font)!important;
+          font-family: var(--display-font) !important;
           text-shadow: var(--funky-text-shadow);
           margin: 0;
           padding-top: 0;
@@ -239,7 +246,7 @@ export default function GlobalStyles() {
         .funky-button {
           ${buttonStyle};
           font-size: var(--text-03);
-          font-family: var(--display-font)!important;
+          font-family: var(--display-font) !important;
           width: 100%;
           max-width: 350px;
           border: 0;
@@ -270,7 +277,7 @@ export default function GlobalStyles() {
           padding: 12px;
           background-color: #f3f3f3;
           * {
-            color: var(--black)!important;
+            color: var(--black) !important;
           }
           overflow-x: scroll;
           margin-top: 20px;
@@ -285,19 +292,13 @@ export default function GlobalStyles() {
         }
 
         .display-font {
-          font-family: var(--display-font)!important;
-          text-shadow: 
-            1px 1px 3px #000, 
-            3px 3px 10px purple,
-            3px 3px 15px yellow,
-            3px 3px 30px #ff9050;
+          font-family: var(--display-font) !important;
+          text-shadow: 1px 1px 3px #000, 3px 3px 10px purple,
+            3px 3px 15px yellow, 3px 3px 30px #ff9050;
         }
 
         .funky-shadow {
-          box-shadow:
-            1px 1px 3px #000, 
-            3px 3px 10px purple,
-            3px 3px 15px yellow,
+          box-shadow: 1px 1px 3px #000, 3px 3px 10px purple, 3px 3px 15px yellow,
             3px 3px 30px #ff9050;
         }
 
@@ -332,6 +333,100 @@ export default function GlobalStyles() {
         /* ZORA SPECIFIC -- CLEAN UP
            - WALLET MODAL
         */
+
+        .bold {
+          font-weight: bold;
+        }
+
+        .full-justify {
+          display: flex;
+          justify-content: space-between;
+          text-align: justify;
+          align-items: flex-end;
+        }
+
+        .center {
+          text-align: center;
+        }
+
+        .flex-between-col {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        .drop-wrapper {
+          max-width: 1140px;
+          margin: 0 auto;
+        }
+
+        .drop-header {
+          display: grid;
+          grid-template-columns: 30vw auto;
+          grid-gap: 80px;
+          margin-bottom: 50px;
+
+          @media (max-width: 1024px) {
+            grid-gap: 40px;
+          }
+
+          img {
+            max-width: 100%;
+          }
+        }
+
+        .drop-footer {
+          display: grid;
+          grid-template-columns: auto 220px;
+          grid-gap: 90px;
+          align-items: end;
+          margin-top: 50px;
+
+          img {
+            max-width: 100%;
+          }
+        }
+
+        .drop-header-header {
+          font-size: 8vw;
+          @media (min-width: 1200px) {
+            font-size: 96px;
+          }
+        }
+
+        .drop-footer-phone {
+          font-size: 3.7vw;
+          @media (min-width: 1200px) {
+            font-size: 45px;
+          }
+        }
+
+        .drop-footer-socials {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
+          grid-gap: 12px;
+
+          a {
+            text-align: center;
+          }
+        }
+
+        .drop-header {
+          dl {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 20px;
+            margin-top: 20px;
+          }
+          dt {
+            text-transform: uppercase;
+            opacity: 0.4;
+          }
+          dd {
+            text-align: right;
+          }
+        }
+
         .zora-wallet-modalText {
           padding: var(--space-md);
           display: flex;
@@ -342,37 +437,37 @@ export default function GlobalStyles() {
           width: 100%;
           max-width: 500px;
           filter: drop-shadow(0px 0px 35px #29fd0d);
-          border-radius: var(--space-md)!important;
+          border-radius: var(--space-md) !important;
           border: 2px solid var(--color-a);
         }
 
         .zora-wallet-walletOptionsList {
-          padding: 0 0 0px!important;
-          background: transparent!important;
+          padding: 0 0 0px !important;
+          background: transparent !important;
           display: flex;
           flex-direction: column;
           gap: var(--space-sm);
         }
 
         .zora-wallet-walletOptionsWrapper {
-          padding: 0!important;
+          padding: 0 !important;
         }
 
         .zora-wallet-walletOption {
           ${smallPillButton};
-          color: var(--color-b)!important;
+          color: var(--color-b) !important;
           ${media.hover`
             color: var(--color-a)!important;
           `}
         }
 
         .zora-wallet-modalTitleText {
-          color: var(--color-a)!important;
+          color: var(--color-a) !important;
           text-transform: uppercase;
         }
 
         .zora-wallet-modalContent {
-          padding: var(--space-sm)!important;
+          padding: var(--space-sm) !important;
           h3 {
             font-size: var(--text-02) !important;
             padding: 0 0 15px;
@@ -398,24 +493,24 @@ export default function GlobalStyles() {
         }
 
         .zora-wallet-modalError {
-          font-size: var(--text-micro)!important;
+          font-size: var(--text-micro) !important;
           max-width: 300px;
           margin: auto;
           color: var(--color-a);
         }
 
         .zora-wallet-modalHeader {
-          padding: 0 0 var(--space-sm)!important;
+          padding: 0 0 var(--space-sm) !important;
           display: flex;
           align-items: center;
-          border-bottom: 0!important;
+          border-bottom: 0 !important;
         }
 
         .zora-wallet-modalClose {
           width: 35px;
           height: 35px;
-          background-color: var(--color-a)!important;
-          border-radius: 0px!important;
+          background-color: var(--color-a) !important;
+          border-radius: 0px !important;
           position: relative;
           display: flex;
           justify-content: center;
@@ -427,8 +522,8 @@ export default function GlobalStyles() {
         }
 
         .zora--auction-house-modalInner {
-          padding: 0!important;
-          background: transparent!important;
+          padding: 0 !important;
+          background: transparent !important;
           .zora--auction-house-modalHeader {
             display: none;
           }
@@ -436,7 +531,7 @@ export default function GlobalStyles() {
             padding-top: var(--space-sm);
           }
           .zora--auction-house-bidDisclaimerLine {
-            font-size: var(--text-micro)!important;
+            font-size: var(--text-micro) !important;
           }
           .zora-cardOuter {
             height: 0;
