@@ -53,7 +53,7 @@ export default function Home({
                 <span>&nbsp;VIRGINITY</span>
               </h2>
               <h2
-                className='text-04 full-justify bold'
+                className='drop-header-subheader full-justify bold'
                 css={{ paddingBottom: 0 }}
               >
                 a condom for your wallet.
@@ -120,14 +120,13 @@ export default function Home({
             ? 'Loading...'
             : tokens.map((token: any) => (
                 <div className='token-grid-token'>
-                  <a href='#mint'>MINT</a>
+                  <a href={`/api/metadata/${token.tokenId}`}>MINT</a>
                   <img
                     src={token.image.replace(
                       'ipfs://',
                       'https://cloudflare-ipfs.com/ipfs/'
                     )}
                   />
-                  <br />
                 </div>
               ))}
         </div>

@@ -121,10 +121,15 @@ export default function GlobalStyles() {
 
         html {
           background-color: var(--black);
+          // background: linear-gradient(
+          //   180deg,
+          //   rgba(0, 0, 0, 1) 0%,
+          //   rgba(75, 5, 130, 1) 100%
+          // );
           background: linear-gradient(
             180deg,
             rgba(0, 0, 0, 1) 0%,
-            rgba(75, 5, 130, 1) 100%
+            hsl(274deg 93% 16%) 100%
           );
         }
 
@@ -370,8 +375,28 @@ export default function GlobalStyles() {
             grid-gap: 40px;
           }
 
+          @media (max-width: 690px) {
+            grid-template-columns: 1fr;
+          }
+
           img {
+            display: block;
+            margin: 0 auto;
             max-width: 100%;
+          }
+
+          @media (max-width: 690px) {
+            .flex-row {
+              display: block;
+            }
+          }
+
+          .flex-row button {
+            display: inline-block;
+            margin: 0 auto;
+            @media (min-width: 691px) {
+              margin-left: 32px;
+            }
           }
         }
 
@@ -382,8 +407,14 @@ export default function GlobalStyles() {
           align-items: end;
           margin-top: 50px;
 
+          @media (max-width: 690px) {
+            grid-template-columns: 1fr;
+            grid-gap: 30px;
+          }
+
           img {
             max-width: 100%;
+            margin-bottom: 10px;
           }
         }
 
@@ -391,6 +422,13 @@ export default function GlobalStyles() {
           font-size: 8vw;
           @media (min-width: 1200px) {
             font-size: 96px;
+          }
+        }
+
+        .drop-header-subheader {
+          font-size: 4.9vw;
+          @media (min-width: 1200px) {
+            font-size: 56px;
           }
         }
 
@@ -414,9 +452,11 @@ export default function GlobalStyles() {
         .drop-header {
           dl {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-gap: 20px;
+            grid-template-columns: max-content auto;
+            grid-col-gap: 16px;
+            grid-row-gap: 8px;
             margin-top: 20px;
+            width: 100%;
           }
           dt {
             text-transform: uppercase;
@@ -429,7 +469,7 @@ export default function GlobalStyles() {
 
         .token-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           grid-gap: 25px;
           margin-top: 20px;
 
@@ -439,11 +479,15 @@ export default function GlobalStyles() {
         }
 
         .token-grid-token {
+          min-width: 280px;
           position: relative;
+          overflow: hidden;
 
           &:nth-child(1) {
-            grid-column: 1 / 3;
             transform: scale(0.96) rotate(-2.56deg);
+            @media (min-width: 1120px) {
+              grid-column: 1 / 3;
+            }
           }
 
           &:nth-child(2) {
@@ -459,7 +503,9 @@ export default function GlobalStyles() {
           }
 
           &:nth-child(10) {
-            grid-column: 2 / 4;
+            @media (min-width: 1120px) {
+              grid-column: 2 / 4;
+            }
           }
 
           a {
@@ -470,7 +516,6 @@ export default function GlobalStyles() {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(0, 0, 0, 0.7);
             color: white;
             font-weight: bold;
             position: absolute;
@@ -478,8 +523,11 @@ export default function GlobalStyles() {
             font-size: 2.6em;
             letter-spacing: 0.1em;
             background-blend-mode: multiply;
+            background: rgba(0, 0, 0, 0.8);
             opacity: 0;
             transition: opacity 0.3s ease;
+            border-radius: 35px;
+            overflow: hidden;
 
             &:hover {
               opacity: 1;
@@ -488,8 +536,10 @@ export default function GlobalStyles() {
 
           img {
             aspect-ratio: 1.625;
-            border-radius: 35px;
             object-fit: cover;
+            height: 100%;
+            width: 100%;
+            border-radius: 35px;
             padding: 5px;
             background: conic-gradient(
               from 180deg at 50% 50%,
@@ -498,8 +548,6 @@ export default function GlobalStyles() {
               #00aeef 202.5deg,
               #ff1f8c 360deg
             );
-            height: 100%;
-            width: 100%;
           }
         }
 
