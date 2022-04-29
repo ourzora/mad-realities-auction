@@ -427,6 +427,82 @@ export default function GlobalStyles() {
           }
         }
 
+        .token-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          grid-gap: 25px;
+          margin-top: 20px;
+
+          img {
+            max-width: 100%;
+          }
+        }
+
+        .token-grid-token {
+          position: relative;
+
+          &:nth-child(1) {
+            grid-column: 1 / 3;
+            transform: scale(0.96) rotate(-2.56deg);
+          }
+
+          &:nth-child(2) {
+            transform: rotate(2.06deg);
+          }
+
+          &:nth-child(6) {
+            transform: rotate(1.06deg);
+          }
+
+          &:nth-child(8) {
+            transform: rotate(-1.46deg);
+          }
+
+          &:nth-child(10) {
+            grid-column: 2 / 4;
+          }
+
+          a {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-weight: bold;
+            position: absolute;
+            text-decoration: none;
+            font-size: 2.6em;
+            letter-spacing: 0.1em;
+            background-blend-mode: multiply;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+
+            &:hover {
+              opacity: 1;
+            }
+          }
+
+          img {
+            aspect-ratio: 1.625;
+            border-radius: 35px;
+            object-fit: cover;
+            padding: 5px;
+            background: conic-gradient(
+              from 180deg at 50% 50%,
+              #ff1f8c 0deg,
+              #00ff37 65.63deg,
+              #00aeef 202.5deg,
+              #ff1f8c 360deg
+            );
+            height: 100%;
+            width: 100%;
+          }
+        }
+
         .zora-wallet-modalText {
           padding: var(--space-md);
           display: flex;

@@ -3,6 +3,7 @@ import { getStaticTokens } from '../services/getStaticTokens'
 import { PageWrapper } from '../styles/components'
 import { Head } from '../components/HeadMeta'
 import { useCountdown } from '../hooks/useCountdown'
+import { useTokens } from '../hooks/useTokens'
 import { funkyHeader } from '../styles/mixins'
 
 export default function Home({
@@ -15,6 +16,12 @@ export default function Home({
   metaTitle: string | undefined
 }) {
   const { countdownText } = useCountdown(new Date(1651634876374).toString())
+  const [{ isLoading: tokensLoading, tokens }] = useTokens({
+    url: `/api/metadata/`,
+    reverse: false,
+    start: 0,
+    end: 10,
+  })
 
   return (
     <PageWrapper>
@@ -108,7 +115,22 @@ export default function Home({
           </h3>
         </div>
 
-        <div>Hello</div>
+        <div className='token-grid'>
+          {tokensLoading
+            ? 'Loading...'
+            : tokens.map((token: any) => (
+                <div className='token-grid-token'>
+                  <a href='#mint'>MINT</a>
+                  <img
+                    src={token.image.replace(
+                      'ipfs://',
+                      'https://cloudflare-ipfs.com/ipfs/'
+                    )}
+                  />
+                  <br />
+                </div>
+              ))}
+        </div>
 
         <div className='drop-footer'>
           <div>
