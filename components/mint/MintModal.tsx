@@ -32,7 +32,7 @@ export function MintModal({ onClose }: MintModalProps) {
 
   const txError = useMemo(
     () =>
-      purchaseData?.error?.message.includes('Too many')
+      purchaseData?.error?.message?.includes('Too many')
         ? 'You can only mint 1 nft per wallet'
         : purchaseData?.error?.message,
     [purchaseData]
