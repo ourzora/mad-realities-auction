@@ -183,6 +183,10 @@ export function MintModal({ onClose }: MintModalProps) {
                 }}
               >
                 Gas fees apply when minting.
+                <button type="button" className="bg-indigo-500 ..." disabled>
+                  <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>
+                  Processing...
+                </button>
               </ModalDescription>
             </>
           ) : purchaseData.error ? (
@@ -206,11 +210,13 @@ export function MintModal({ onClose }: MintModalProps) {
                   right: 0,
                   bottom: 0,
                   width: '100%',
+                  color: "#5DADE2",
+                  textDecoration: 'underline'
                 }}
                 href={`${ETHERSCAN_BASE_URL}/tx/${purchaseData.data?.hash}`}
                 target='_blank'
               >
-                View your transaction
+                View your transaction {'->'}
               </EtherscanLink>
             </>
           ) : (
