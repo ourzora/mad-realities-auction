@@ -7,7 +7,7 @@ import { NetworkIDs } from '@zoralabs/nft-hooks'
 import { MediaConfiguration } from '@zoralabs/nft-components'
 import { mediaConfigurationStyles } from '../styles/theme'
 import GlobalStyles from '../styles/GlobalStyles'
-import { NETWORK_ID, RPC_URL } from '../utils/env-vars'
+import { INFURA_ID, NETWORK_ID, RPC_URL } from '../utils/env-vars'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 
@@ -21,6 +21,8 @@ import {
 import { chain, WagmiProvider } from 'wagmi'
 import { providers } from 'ethers'
 
+console.log({ RPC_URL })
+
 const provider = () => new providers.JsonRpcProvider(RPC_URL)
 
 const chains: Chain[] =
@@ -30,6 +32,7 @@ const chains: Chain[] =
 
 const wallets = getDefaultWallets({
   chains,
+  infuraId: INFURA_ID,
   appName: 'Mad Realities',
   jsonRpcUrl: RPC_URL || '',
 })

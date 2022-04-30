@@ -34,17 +34,20 @@ export function MintModal({ onClose }: MintModalProps) {
     () =>
       purchaseData?.error?.message?.includes('Too many')
         ? 'You can only mint 1 nft per wallet'
-        : purchaseData?.error?.message,
+        : purchaseData?.error?.message ||
+          'An unknown error has occurred, try again.',
     [purchaseData]
   )
 
-  const handlePurchase = useCallback(
-    () =>
-      purchase({
+  const handlePurchase = useCallback(async () => {
+    try {
+      await purchase({
         args: [1],
-      }),
-    [purchase]
-  )
+      })
+    } catch (e) {
+      console.error(e)
+    }
+  }, [purchase])
 
   useEffect(() => {
     if (purchaseData.loading) {

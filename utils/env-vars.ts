@@ -26,6 +26,7 @@ export const DEFAULT_OG_CARD = `${BASE_URL}/mad_house_link_preview.png`
 export const FAVICON = `${BASE_URL}/mad-icon.png`
 
 export const RPC_URL: string | undefined = process.env.NEXT_PUBLIC_RPC_URL
+export const INFURA_ID: string | undefined = process.env.NEXT_PUBLIC_INFURA_ID
 
 export const LANDING_HERO_TOKEN =
   process.env.NEXT_PUBLIC_FEATURED_AUCTION_ID === undefined
