@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react'
 
-export const useTokens = ({ url, start = 0, end = 0, reverse = false }) => {
+interface GetTokensProps {
+  url: string
+  start?: number
+  end?: number
+  reverse?: boolean
+}
+
+export const useTokens = ({ url, start = 0, end = 0, reverse = false }: GetTokensProps): any => {
   const [isLoading, setIsLoading] = useState(true)
   const [tokens, setTokens] = useState([])
 
-  const getTokens = async ({ url, start, end, reverse }) => {
+  const getTokens = async ({ url, start, end, reverse }: GetTokensProps) => {
     // react-query / cache this part?
     let tokens = []
     try {
@@ -20,7 +27,7 @@ export const useTokens = ({ url, start = 0, end = 0, reverse = false }) => {
     getTokens({ url, start, end, reverse })
   }, [])
 
-  const update = ({ start, end }) => getTokens({ url, start, end, reverse })
+  const update = ({ start, end }: GetTokensProps) => getTokens({ url, start, end, reverse })
 
   return [
     {

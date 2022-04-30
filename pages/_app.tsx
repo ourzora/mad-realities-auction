@@ -1,27 +1,53 @@
 import '../styles/reset.css'
+import '@rainbow-me/rainbowkit/styles.css'
+import '@reach/dialog/styles.css'
 import type { AppProps } from 'next/app'
 import NProgress from 'next-nprogress-emotion'
 import { NetworkIDs } from '@zoralabs/nft-hooks'
 import { MediaConfiguration } from '@zoralabs/nft-components'
-import { Web3ConfigProvider } from '@zoralabs/simple-wallet-provider'
-import { mediaConfigurationStyles, web3ProviderStyles } from '../styles/theme'
+import { mediaConfigurationStyles } from '../styles/theme'
 import GlobalStyles from '../styles/GlobalStyles'
 import { NETWORK_ID, RPC_URL } from '../utils/env-vars'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
+
+import {
+  Chain,
+  connectorsForWallets,
+  darkTheme,
+  getDefaultWallets,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit'
+import { chain, WagmiProvider } from 'wagmi'
+import { providers } from 'ethers'
+
+const infuraId = process.env.INFURA_ID
+
+const provider = ({ chainId }: { chainId?: number }) =>
+  new providers.InfuraProvider(chainId, infuraId)
+
+const chains: Chain[] =
+  NETWORK_ID === '1'
+    ? [{ ...chain.mainnet, name: 'Ethereum' }]
+    : [{ ...chain.rinkeby, name: 'Rinkeby' }]
+
+const wallets = getDefaultWallets({
+  chains,
+  infuraId,
+  appName: 'Mad Realities',
+  jsonRpcUrl: RPC_URL || '',
+})
+
+const connectors = connectorsForWallets(wallets)
 
 export default function CreateMarketplaceApp({
   Component,
   pageProps,
 }: AppProps) {
   return (
-    <>
-      <GlobalStyles />
-      <Web3ConfigProvider
-        networkId={parseInt(NETWORK_ID as string, 10)}
-        rpcUrl={(RPC_URL as string) || undefined}
-        theme={web3ProviderStyles}
-      >
+    <WagmiProvider autoConnect connectors={connectors} provider={provider}>
+      <RainbowKitProvider chains={chains} theme={darkTheme()}>
+        <GlobalStyles />
         <MediaConfiguration
           networkId={NETWORK_ID as NetworkIDs}
           style={mediaConfigurationStyles}
@@ -33,7 +59,7 @@ export default function CreateMarketplaceApp({
           </main>
           <Footer />
         </MediaConfiguration>
-      </Web3ConfigProvider>
-    </>
+      </RainbowKitProvider>
+    </WagmiProvider>
   )
 }

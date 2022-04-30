@@ -5,6 +5,11 @@ import { Head } from '../components/HeadMeta'
 import { useCountdown } from '../hooks/useCountdown'
 import { useTokens } from '../hooks/useTokens'
 import { funkyHeader } from '../styles/mixins'
+import { useCallback, useEffect, useState } from 'react'
+import { MintModal } from '../components/mint/MintModal'
+import { AnimatePresence } from 'framer-motion'
+import { ConnectButton } from '@rainbow-me/rainbowkit'
+import { useAccount } from 'wagmi'
 
 export default function Home({
   metaImage,
@@ -15,6 +20,10 @@ export default function Home({
   metaDescription: string | undefined
   metaTitle: string | undefined
 }) {
+  const [accountData] = useAccount()
+  const [shouldMint, setShouldMint] = useState(false)
+  const [showMintModal, setShowMintModal] = useState(false)
+
   const { countdownText } = useCountdown(new Date(1651634876374).toString())
   const [{ isLoading: tokensLoading, tokens }] = useTokens({
     url: `/api/metadata/`,
@@ -23,11 +32,25 @@ export default function Home({
     end: 10,
   })
 
+  const handlePromptRainbow = useCallback((cb: () => void) => {
+    setShouldMint(true)
+    cb()
+  }, [])
+
+  useEffect(() => {
+    if (!shouldMint || !accountData?.data?.address) {
+      return
+    }
+
+    if (!showMintModal) {
+      setShowMintModal(true)
+      setShouldMint(false)
+    }
+  }, [accountData?.data?.address, shouldMint, showMintModal])
+
   return (
     <PageWrapper>
       <Head
-        /* if you want this to be dynamic then check the getStaticTokens service
-         */
         title={metaTitle}
         description={metaDescription}
         ogImage={metaImage}
@@ -69,18 +92,39 @@ export default function Home({
                 <dd>6,969</dd>
               </dl>
               <div>
-                <button
-                  style={{
-                    border: 0,
-                    display: 'block',
-                    position: 'relative',
-                    bottom: '-16px',
-                    maxWidth: '180px',
-                    cursor: 'pointer',
-                  }}
-                >
-                  <img src='/button.png' />
-                </button>
+                {accountData.data?.address ? (
+                  <button
+                    onClick={() => setShowMintModal(true)}
+                    style={{
+                      border: 0,
+                      display: 'block',
+                      position: 'relative',
+                      bottom: '-16px',
+                      maxWidth: '180px',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    <img src='/button.png' />
+                  </button>
+                ) : (
+                  <ConnectButton.Custom>
+                    {({ openConnectModal }) => (
+                      <button
+                        onClick={() => handlePromptRainbow(openConnectModal)}
+                        style={{
+                          border: 0,
+                          display: 'block',
+                          position: 'relative',
+                          bottom: '-16px',
+                          maxWidth: '180px',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        <img src='/button.png' />
+                      </button>
+                    )}
+                  </ConnectButton.Custom>
+                )}
               </div>
             </div>
           </div>
@@ -158,6 +202,9 @@ export default function Home({
           </div>
         </div>
       </div>
+      <AnimatePresence>
+        {showMintModal && <MintModal onClose={() => setShowMintModal(false)} />}
+      </AnimatePresence>
     </PageWrapper>
   )
 }
