@@ -21,10 +21,7 @@ import {
 import { chain, WagmiProvider } from 'wagmi'
 import { providers } from 'ethers'
 
-const infuraId = process.env.INFURA_ID
-
-const provider = ({ chainId }: { chainId?: number }) =>
-  new providers.InfuraProvider(chainId, infuraId)
+const provider = () => new providers.JsonRpcProvider(RPC_URL)
 
 const chains: Chain[] =
   NETWORK_ID === '1'
@@ -33,7 +30,6 @@ const chains: Chain[] =
 
 const wallets = getDefaultWallets({
   chains,
-  infuraId,
   appName: 'Mad Realities',
   jsonRpcUrl: RPC_URL || '',
 })

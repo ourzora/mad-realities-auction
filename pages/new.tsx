@@ -9,7 +9,9 @@ import { useCallback, useEffect, useState } from 'react'
 import { MintModal } from '../components/mint/MintModal'
 import { AnimatePresence } from 'framer-motion'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
-import { useAccount } from 'wagmi'
+import { useAccount, useContractRead } from 'wagmi'
+import { CONDOM_CONTRACT_ADDRESS } from '../utils/env-vars'
+import DropsContractABI from '../abis/DropsContractABI.json'
 
 export default function Home({
   metaImage,
@@ -23,6 +25,17 @@ export default function Home({
   const [accountData] = useAccount()
   const [shouldMint, setShouldMint] = useState(false)
   const [showMintModal, setShowMintModal] = useState(false)
+
+  const [{ data: totalSupply }] = useContractRead(
+    {
+      addressOrName: CONDOM_CONTRACT_ADDRESS,
+      contractInterface: DropsContractABI.abi,
+    },
+    'totalSupply',
+    {
+      watch: false,
+    }
+  )
 
   const { countdownText } = useCountdown(new Date(1651634876374).toString())
   const [{ isLoading: tokensLoading, tokens }] = useTokens({
@@ -89,7 +102,7 @@ export default function Home({
                 <dt>PRICE</dt>
                 <dd>Free. Just pay gas.</dd>
                 <dt>№ MINTED</dt>
-                <dd>6,969</dd>
+                <dd>{totalSupply?.toString()}</dd>
               </dl>
               <div>
                 {accountData.data?.address ? (
