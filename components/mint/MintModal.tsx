@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import { DialogContent, DialogOverlay } from '@reach/dialog'
 import { useContractWrite, useWaitForTransaction } from 'wagmi'
@@ -7,6 +7,7 @@ import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import { CONDOM_CONTRACT_ADDRESS, NETWORK_ID } from '../../utils/env-vars'
 import { Cross1Icon } from '@radix-ui/react-icons'
+import SquareLoader from "react-spinners/SquareLoader";
 
 console.log({ NETWORK_ID })
 export const ETHERSCAN_BASE_URL =
@@ -16,7 +17,24 @@ interface MintModalProps {
   onClose: () => void
 }
 
+const loadingColors = [
+  '#4AACE9',
+  '#6FC43B',
+  '#EC3F8B'
+]
+
 export function MintModal({ onClose }: MintModalProps) {
+  const [loadingColorStateIndex, setLoadingColorStateIndex] = useState(0);
+  useEffect(() => {
+    const id = setTimeout(
+      () => setLoadingColorStateIndex((loadingColorStateIndex + 1) % loadingColors.length),
+      1400
+    );
+    return () => {
+      clearInterval(id); // removes React warning when gets unmounted
+    };
+  }, [loadingColorStateIndex]);
+
   const [purchaseData, purchase] = useContractWrite(
     {
       addressOrName: CONDOM_CONTRACT_ADDRESS,
@@ -173,6 +191,9 @@ export function MintModal({ onClose }: MintModalProps) {
                 We sent a request to mint your nft onto the Ethereum blockchain.
                 Approve the request in your wallet to continue.
               </ModalDescription>
+              <LoadingCondom>
+                <SquareLoader color={loadingColors[loadingColorStateIndex]} loading={true} size={35} />
+              </LoadingCondom>
               <ModalDescription
                 style={{
                   position: 'absolute',
@@ -182,8 +203,10 @@ export function MintModal({ onClose }: MintModalProps) {
                   width: '100%',
                 }}
               >
+              
                 Gas fees apply when minting.
               </ModalDescription>
+
             </>
           ) : purchaseData.error ? (
             <>
@@ -199,6 +222,9 @@ export function MintModal({ onClose }: MintModalProps) {
                 Your transaction has been broadcast onto the Ethereum
                 blockchain. Please wait for your transaction to confirm.
               </ModalDescription>
+              <LoadingCondom>
+                <SquareLoader color={loadingColors[loadingColorStateIndex]} loading={true} size={35} />
+              </LoadingCondom>
               <EtherscanLink
                 style={{
                   position: 'absolute',
@@ -259,6 +285,21 @@ const EtherscanLink = styled.a`
   color: #616161;
   text-transform: uppercase;
 `
+
+const LoadingCondom = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 5;
+  margin: 5;
+  font-style: normal;
+  font-weight: lighter;
+  font-size: 15px;
+  line-height: 25px;
+  color: #999999;
+  align-items: center;
+`
+
 const ModalButton = styled.button`
   background: #333333;
   cursor: pointer;
