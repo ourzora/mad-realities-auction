@@ -34,7 +34,7 @@ export default async function handler(req, res) {
     select nft_id from public."Submission" where nft_id = ${idNumber} limit 1;
   `
 
-  if (result) {
+  if (result && result.length > 0) {
     res.send({
       ...metadataValue,
       properties: {
