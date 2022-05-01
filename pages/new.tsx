@@ -169,7 +169,7 @@ export default function Home({
           </h2>
           <h3 className='text-03'>
             we are making Proof of Love S0 CC0. it belongs to you, baby.{' '}
-            <a href='#'>learn more here</a>
+            <a href='#'>text CC0 to our hotline for updates</a>
           </h3>
         </div>
 
