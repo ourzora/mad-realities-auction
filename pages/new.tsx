@@ -177,7 +177,7 @@ export default function Home({
           {tokensLoading
             ? 'Loading...'
             : tokens.map((token: any) => (
-                <div className='token-grid-token' style={{"text-align": "center"}}>
+                <div className='token-grid-token'>
                   <a href={`/api/metadata/${token.tokenId}`}>COMING SOON TO MINT</a>
                   <img
                     src={token.image.replace(
