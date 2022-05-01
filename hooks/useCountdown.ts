@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { intervalToDuration } from 'date-fns'
 
 function pad(str: Number | undefined) {
-  return str ? String(str).padStart(2, '0') : ''
+  return str ? String(str).padStart(2, '0') : '00'
 }
 
 export const useCountdown = (dateStr: string) => {

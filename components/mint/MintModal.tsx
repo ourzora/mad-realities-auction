@@ -152,7 +152,7 @@ export function MintModal({ onClose }: MintModalProps) {
               ? 'Transaction Failed'
               : transactionData.loading
               ? 'Transaction Pending'
-              : 'Its yours.'}
+              : 'Thank you for participating in Proof of Love S0 by Mad Realities! ur sexy'}
             {!transactionData.data && (
               <button
                 onClick={onClose}
@@ -218,12 +218,19 @@ export function MintModal({ onClose }: MintModalProps) {
               <div>
                 <img
                   src='/connie.png'
-                  css={{ height: 'auto', width: '100%' }}
+                  css={{ height: 'auto', width: '70%' }}
                 />
               </div>
               <ModalDescription css={{ marginBottom: 20 }}>
-                Thank you for being part of Mad Realities first season. Some
-                more cool copy im sure ya'll will be much better at than me
+                Make sure to vote by texting our hotline to unlock your condom's powers. <br/>
+                <br/>
+                CHLOE or HARRISON <br/>
+                ALEX or NATALIE <br/>
+                DYLAN or PETER <br/>
+                MOLLY or ANNALISA <br/>
+                <br/>
+                to +1 (917) 810-3314
+                <br />
               </ModalDescription>
               <ModalButton css={{ position: 'relative' }} onClick={onClose}>
                 Close

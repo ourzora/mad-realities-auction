@@ -164,7 +164,7 @@ export default function Home({
 
         <div className='center'>
           <h2 className='text-05 bold' css={{ paddingBottom: 0 }}>
-            OWN A PART OF THE SHOW
+            COMING SOON: OWN A PART OF THE SHOW
           </h2>
           <h3 className='text-03'>
             we are making Proof of Love S0 CC0. it belongs to you, baby.{' '}
