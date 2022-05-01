@@ -45,7 +45,7 @@ export const getStaticTokens: GetStaticProps = async () => {
       const tokenMetadata = FetchStaticData.getIndexerServerTokenInfo(nft)
       metaImage = tokenMetadata?.metadata?.image
       metaDescription = `Text to vote in the finale of Proof of Love S0 to claim your condom NFT.`
-      metaTitle = `A condom for your wallet by Mad Realities`
+      metaTitle = `A condom for your wallet powered by Zora`
     } catch (err) {
       console.log(err)
     }
