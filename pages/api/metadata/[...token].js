@@ -1,7 +1,7 @@
-import { ethers } from 'ethers'
+import { existsSync } from 'fs'
+
 const path = require('path')
 const fsp = require('fs').promises
-import { existsSync } from 'fs'
 
 const privateDirectory = path.resolve(process.cwd(), 'private')
 const validate = async (id, file) => {
