@@ -1,7 +1,7 @@
 import sql from '../../../../services/metadata-db'
 
 const DEFAULT_METADATA = {
-  title: `Condom For Your Wallet`,
+  name: `Condom For Your Wallet`,
   description: `Something big is coming
 
 Condoms for your wallet were distributed for free starting May 1, 2022 to commemorate your participation in the wrap of Season Zero of Proof of Love, an interactive dating show where you decide who (and what) happens.
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
 
   const metadataValue = {
     ...DEFAULT_METADATA,
-    title: `${DEFAULT_METADATA.title} #${id}`,
+    name: `${DEFAULT_METADATA.name} #${id}`,
   }
 
   if (!sql) {
