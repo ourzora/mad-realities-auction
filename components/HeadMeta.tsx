@@ -26,10 +26,7 @@ export const Head = ({
     <link rel='icon' type='image/png' sizes='24x24' href={FAVICON} />
     <meta property='og:url' content={url || BASE_URL} />
     <meta property='og:title' content={title || ''} />
-    <meta
-      property='og:description'
-      content={description || APP_DESCRIPTION}
-    />
+    <meta property='og:description' content={description || APP_DESCRIPTION}/>
     <meta name='twitter:site' content={url || BASE_URL} />
     <meta name='twitter:card' content='summary_large_image' />
     <meta name='twitter:image' content={ogImage || DEFAULT_OG_CARD} />
