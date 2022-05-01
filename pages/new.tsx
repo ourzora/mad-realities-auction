@@ -37,6 +37,7 @@ export default function Home({
     }
   )
 
+  // 1651456800 - new time for 5/1 10pm close
   const { countdownText } = useCountdown(new Date(1651634876374).toString())
   const [{ isLoading: tokensLoading, tokens }] = useTokens({
     url: `/api/metadata/`,
@@ -176,8 +177,8 @@ export default function Home({
           {tokensLoading
             ? 'Loading...'
             : tokens.map((token: any) => (
-                <div className='token-grid-token'>
-                  <a href={`/api/metadata/${token.tokenId}`}>MINT</a>
+                <div className='token-grid-token' style={{"text-align": "center"}}>
+                  <a href={`/api/metadata/${token.tokenId}`}>COMING SOON TO MINT</a>
                   <img
                     src={token.image.replace(
                       'ipfs://',
