@@ -5,7 +5,7 @@ function pad(str: Number | undefined) {
   return str ? String(str).padStart(2, '0') : ''
 }
 
-export const useCountdown = (dateStr) => {
+export const useCountdown = (dateStr: string) => {
   if (!dateStr) return { countdownText: false }
   const [ready, setReady] = useState(false)
   useEffect(() => {

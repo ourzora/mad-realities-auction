@@ -16,6 +16,8 @@ export default function Home({
   metaTitle: string | undefined
 }) {
   const { countdownText } = useCountdown(new Date(1651634876374).toString())
+  // TODO(iain): FIX
+  // @ts-ignore
   const [{ isLoading: tokensLoading, tokens }] = useTokens({
     url: `/api/metadata/`,
     reverse: false,
