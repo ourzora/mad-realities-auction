@@ -205,6 +205,10 @@ export function MintModal({ onClose }: MintModalProps) {
               >
               
                 Gas fees apply when minting.
+                <button type="button" className="bg-indigo-500 ..." disabled>
+                  <svg className="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24"></svg>
+                  Processing...
+                </button>
               </ModalDescription>
 
             </>
@@ -232,11 +236,13 @@ export function MintModal({ onClose }: MintModalProps) {
                   right: 0,
                   bottom: 0,
                   width: '100%',
+                  color: "#5DADE2",
+                  textDecoration: 'underline'
                 }}
                 href={`${ETHERSCAN_BASE_URL}/tx/${purchaseData.data?.hash}`}
                 target='_blank'
               >
-                View your transaction
+                View your transaction {'->'}
               </EtherscanLink>
             </>
           ) : (
@@ -248,7 +254,8 @@ export function MintModal({ onClose }: MintModalProps) {
                 />
               </div>
               <ModalDescription css={{ marginBottom: 20 }}>
-                Make sure to vote by texting our hotline to unlock your condom's powers. <br/>
+                A token of appreciation from us to you. This condom NFT is the first step down the Mad Realities rabbithole. It is your key to drops and events for summer 2022 and is our way of knowing who has participated in our universe so far. While Proof of Love may be coming to an end, this is just the start of Mad Realities. Crypto responsibly, kids.
+                {/* Make sure to vote by texting our hotline to unlock your condom's powers. <br/>
                 <br/>
                 CHLOE or HARRISON <br/>
                 ALEX or NATALIE <br/>
@@ -256,7 +263,7 @@ export function MintModal({ onClose }: MintModalProps) {
                 MOLLY or ANNALISA <br/>
                 <br/>
                 to +1 (917) 810-3314
-                <br />
+                <br /> */}
               </ModalDescription>
               <ModalButton css={{ position: 'relative' }} onClick={onClose}>
                 Close

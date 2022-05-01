@@ -44,8 +44,8 @@ export const getStaticTokens: GetStaticProps = async () => {
       })
       const tokenMetadata = FetchStaticData.getIndexerServerTokenInfo(nft)
       metaImage = tokenMetadata?.metadata?.image
-      metaDescription = `Auction for ${tokenMetadata?.metadata.name} ends 9pm ET live on the Proof of Love aftershow. Winner can put any contestant in and sponsor the next episode.`
-      metaTitle = `New Auction for ${tokenMetadata?.metadata.name} is LIVE and ends Sun 9pm ET at Mad House`
+      metaDescription = `Text to vote in the finale of Proof of Love S0 to claim your condom NFT.`
+      metaTitle = `A condom for your wallet by Mad Realities`
     } catch (err) {
       console.log(err)
     }

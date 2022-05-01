@@ -482,6 +482,7 @@ export default function GlobalStyles() {
           min-width: 280px;
           position: relative;
           overflow: hidden;
+          text-align: center;
 
           &:nth-child(1) {
             transform: scale(0.96) rotate(-2.56deg);
