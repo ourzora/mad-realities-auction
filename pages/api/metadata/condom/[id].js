@@ -2,10 +2,11 @@ import sql from '../../../../services/metadata-db'
 
 const DEFAULT_METADATA = {
   title: `Condom For Your Wallet`,
-  description: `To celebrate the season finale of Proof of Love S0 of the Mad Realities network, we invite you to mint a condom NFT for your wallet. 
-Participate in the finale to unlock a shiny condom by attending the aftershow filming IRL or by voting for the winning couple online. Shiny condoms provide secret perks and access to be revealed over time.
-Minting is open for 72 hours after doors open (6:30pm ET on May 1, 2022) and cements your status as an early supporter of Mad Realities.
-https://madrealities.xyz/`,
+  description: `Something big is coming
+
+Condoms for your wallet were distributed for free starting May 1, 2022 to commemorate your participation in the wrap of Season Zero of Proof of Love, an interactive dating show where you decide who (and what) happens.
+
+This condom provides secret perks and access to be revealed over time, and might unwrap into something sexy.`,
   properties: {
     Status: 'Broken',
     Interaction: 'Powers Dormant',
