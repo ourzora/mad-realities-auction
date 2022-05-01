@@ -15,7 +15,7 @@ export default function Home({
   metaDescription: string | undefined
   metaTitle: string | undefined
 }) {
-  const { countdownText } = useCountdown(new Date(1651634876374).toString())
+  const { countdownText } = useCountdown(new Date(1651444200*1000).toString())
   // TODO(iain): FIX
   // @ts-ignore
   const [{ isLoading: tokensLoading, tokens }] = useTokens({
