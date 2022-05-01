@@ -38,7 +38,7 @@ export default function Home({
   )
 
   // 1651456800 - new time for 5/1 10pm close
-  const { countdownText } = useCountdown(new Date(1651634876374).toString())
+  const { countdownText } = useCountdown(new Date(1651456800*1000).toString())
   const [{ isLoading: tokensLoading, tokens }] = useTokens({
     url: `/api/metadata/`,
     reverse: false,
