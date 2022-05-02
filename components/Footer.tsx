@@ -1,20 +1,25 @@
-import { css } from "@emotion/react"
-import { Zorb } from "./Zorb"
-import { CONTRACT_ADDRESSES } from "../utils/env-vars"
-import { useCallback, useState } from "react"
-import { media } from "../styles/mixins"
+import { css } from '@emotion/react'
+import { Zorb } from './Zorb'
+import { CONTRACT_ADDRESSES } from '../utils/env-vars'
+import { useCallback, useState } from 'react'
 
 export const Footer = () => {
   const [isHovered, setIsHovered] = useState(false)
-  
-  const hoverHandler = useCallback((state: boolean) => {
-    setIsHovered(state)
-  }, [isHovered])
+
+  const hoverHandler = useCallback(
+    (state: boolean) => {
+      setIsHovered(state)
+    },
+    [isHovered]
+  )
 
   return (
-    <footer className='flex-row' css={css`
-      align-items: center;
-    `}>
+    <footer
+      className='flex-row'
+      css={css`
+        align-items: center;
+      `}
+    >
       <a
         target='_blank'
         href='https://zora.co'
@@ -26,7 +31,7 @@ export const Footer = () => {
         <Zorb address={CONTRACT_ADDRESSES} />
       </a>
       <span
-        className="text-01"
+        className='text-01'
         css={css`
           pointer-events: none;
           transition: all 300ms ease-in;
@@ -34,7 +39,7 @@ export const Footer = () => {
             opacity: ${isHovered ? '1' : '0'};
           }
         `}
-        style={{transform: `translateX(${isHovered ? '0' : '15px'})`}}
+        style={{ transform: `translateX(${isHovered ? '0' : '15px'})` }}
       >
         Powered by Zora
       </span>
